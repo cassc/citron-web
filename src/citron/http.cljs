@@ -88,4 +88,15 @@
         :handler (fn [{:keys [code msg]}]
                    (when-not (zero? code)
                      (swap! db/app-state assoc :error msg)))
-        :error-handler (http-error-handler "/msg")})) 
+        :error-handler (http-error-handler "/msg")}))
+
+(defn get-msg-board []
+  (GET "/msg" 
+       {:response-format :json
+        :keywords? true
+        :timeout 60000
+        :handler (fn [{:keys [code data msg]}]
+                   (if (zero? code)
+                     (reset! db/msg-store data)
+                     (swap! db/app-state assoc :error msg)))
+        :error-handler (http-error-handler "/msg")}))

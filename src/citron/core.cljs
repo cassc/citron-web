@@ -60,9 +60,21 @@
           (.stopPropagation evt)
           false)))
 
+(defn start-msg-loader []
+  (go-loop []
+    (try
+      (when (and (:user @db/app-state)
+                 (not (:edit-msg-board @db/app-state)))
+        (http/get-msg-board))
+      (catch :default e
+        (t/error "msg-loader error" e)))
+    (<! (timeout 5000))
+    (recur)))
+
 (defonce init!
   (delay
     (disable-context-menu!)
+    (start-msg-loader)
     (hook-browser-navigation!)))
 
 (enable-console-print!)
