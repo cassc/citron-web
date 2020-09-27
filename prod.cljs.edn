@@ -1,0 +1,2 @@
+{:main citron.core
+ :externs ^:replace ["externs/common.js"]}

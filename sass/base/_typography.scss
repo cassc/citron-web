@@ -1,0 +1,29 @@
+body {
+  font-family: "AriaMT", "Aria", "Lato","Open Sans", Arial, Helvetica, sans-serif, 'Microsoft YaHei', '微软雅黑';
+  font-weight: 400;
+  /*font-size: 16px;*/
+  line-height: 1.7;
+  color: var(--color-primary);
+}
+
+.error {
+  color: $color-red;
+  &-input{
+    @include cInput;
+    border: 1px solid $color-red !important; 
+  }
+}
+
+
+/*声明 WebFont*/
+@font-face {
+  font-family: 'Futura LT Medium';
+  src: url('../fonts/Futura LT Medium.ttf');
+  src:
+    url('../font/FuturaLT.eot?#font-spider') format('embedded-opentype'),
+    url('../font/FuturaLT.woff') format('woff'),
+    url('../font/FuturaLT.ttf') format('truetype'),
+    url('../font/FuturaLT.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

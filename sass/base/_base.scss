@@ -1,0 +1,98 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+:root{
+  --color-primary: #353535;
+  --color-primary-light: rgb(241, 248, 255);
+  --color-tertiary-light: rgb(200, 225, 255);
+}
+
+html {
+  // This defines what 1rem is
+  font-size:  100%; // 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+
+  @include respond(tab-land) { // width < 1200?
+    font-size: 81%; // 56.25%;1 rem = 9px, 9/16 = 50%
+  }
+
+  @include respond(tab-port) { // width < 900?
+    font-size: 72%; //50%; 1 rem = 8px, 8/16 = 50%
+  }
+  
+  @include respond(big-desktop) { // width > 1900?
+    font-size: 108%; //1rem = 12, 12/16
+  }
+}
+
+body {
+  box-sizing: border-box;
+  background-color: $color-white;
+}
+
+/* ::selection { */
+/*   background-color: var(--color-primary); */
+/*   color: $color-white; */
+/* } */
+
+// https://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-input-s-spin-box
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.mt{
+  &-1 {
+    margin-top: 1rem;
+  }
+}
+
+.hide{
+  transition: height 100ms 100ms, opacity 100ms 0ms;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.show{
+  opacity:1;
+  visibility: visible;
+  transition: height 100ms 100ms, opacity 100ms 0ms;
+}
+
+.clickable{
+  cursor:pointer;
+}
+
+.fadein{
+  animation: fadeIn .8s linear;
+}
+
+.icon__tiny{
+  width: .8rem;
+  height: .8rem;
+}
+
+.warning{
+  font-weight:bold;
+  color: $color-red;
+}
+
+.option{
+  &__block{
+    width: 1rem;
+    height: 100%;
+  }
+}
+
+.hide-on-phone{
+  @include respond(phone){
+    display:none;
+  }
+}

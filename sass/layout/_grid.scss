@@ -1,0 +1,15 @@
+.grid-col-4{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: .5rem;
+  grid-column-gap: .5rem;
+  @include respond(tab-port){
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(phone){
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,2162 @@
+[
+  {
+    "title": "中央台中国之声",
+    "category": "新闻",
+    "url": "http://rtmpcnr001.cnr.cn/live/zgzs/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "中央台中华之声",
+    "category": "新闻",
+    "url": "http://rtmpcnr005.cnr.cn/live/zhzs/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "中央台民族之声",
+    "category": "新闻",
+    "url": "http://rtmpcnr009.cnr.cn/live/mzzs/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "北京新闻广播",
+    "category": "新闻",
+    "url": "http://cnlive.cnr.cn/hls/bjxwgb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "安徽新闻广播",
+    "category": "新闻",
+    "url": "http://satellitepull.cnr.cn/live/wxahxxgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "重庆之声重庆新闻广播",
+    "category": "新闻",
+    "url": "http://satellitepull.cnr.cn/live/wxcqxwgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "广东电台新闻台",
+    "category": "新闻",
+    "url": "http://satellitepull.cnr.cn/live/wxgdxwgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "山东广播新闻频道",
+    "category": "新闻",
+    "url": "http://cnlive.cnr.cn/hls/sdxwgb.m3u8",
+    "isok": false
+  },
+  {
+    "title": "河南新闻广播",
+    "category": "新闻",
+    "url": "http://stream.hndt.com/live/xinwen/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "广州新闻资讯广播",
+    "category": "新闻",
+    "url": "http://23436.liveplay.myqcloud.com/live/23436_66bf6595a9a011e892905cb9018cf0d4.m3u8",
+    "isok": false
+  },
+  {
+    "title": "东莞新闻综合频道",
+    "category": "新闻",
+    "url": "http://mtv.sun0769.com/dgrtv1/mp4:tv10/index.m3u8",
+    "isok": false
+  },
+  {
+    "title": "深圳新闻频率先锋898",
+    "category": "新闻",
+    "url": "http://sztv-hls.cutv.com/ms3M6DA/64/t27mg30.m3u8",
+    "isok": false
+  },
+  {
+    "title": "韶关电台北江之声",
+    "category": "新闻",
+    "url": "rtmp://www.sgmsw.cn:1935/live/V7UR08VQZASNYT72VE5BJOW2A05CLU4S",
+    "isok": false
+  },
+  {
+    "title": "中山电台综合频率FM96.7",
+    "category": "新闻",
+    "url": "http://cnlive.cnr.cn/hls/zsxinrui.m3u8",
+    "isok": true
+  },
+  {
+    "title": "江门新闻综合台FM100.2",
+    "category": "新闻",
+    "url": "rtmp://tideweblive.jmtv.cn/tslsChannelLive/141Ldor/live",
+    "isok": false
+  },
+  {
+    "title": "江苏新闻综合广播",
+    "category": "新闻",
+    "url": "http://lzlive.vojs.cn/rTyLc36/92/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "南京新闻广播",
+    "category": "新闻",
+    "url": "http://hls.njgb.com/live_hls/1/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "张家港新闻广播",
+    "category": "新闻",
+    "url": "rtmp://wbqsvr.zjgonline.com.cn:1935/live/xinwenguangbo",
+    "isok": false
+  },
+  {
+    "title": "浙江之声",
+    "category": "新闻",
+    "url": "http://yf.m.l.cztv.com/channels/lantian/audio02/128k.m3u8",
+    "isok": true
+  },
+  {
+    "title": "湖北卫星广播",
+    "category": "新闻",
+    "url": "http://live7.hbtv.com.cn/masvod/hbzs_q1/index.m3u8",
+    "isok": true
+  },
+  {
+    "title": "楚天新闻广播",
+    "category": "新闻",
+    "url": "http://live7.hbtv.com.cn/masvod/hbzxgb_q1/index.m3u8",
+    "isok": true
+  },
+  {
+    "title": "宜昌新闻综合广播",
+    "category": "新闻",
+    "url": "rtmp://zb.3xgd.com:1935/FM/xwt",
+    "isok": false
+  },
+  {
+    "title": "十堰新闻频率",
+    "category": "新闻",
+    "url": "rtmp://live.aisy.com/aisy/c007",
+    "isok": false
+  },
+  {
+    "title": "黄石新闻广播",
+    "category": "新闻",
+    "url": "http://www.hsgd.net.cn:8080/hsradio_xwt.flv",
+    "isok": false
+  },
+  {
+    "title": "济宁新闻广播",
+    "category": "新闻",
+    "url": "rtmp://lives.jnnews.tv/audio/s10001-1042",
+    "isok": false
+  },
+  {
+    "title": "威海新闻广播",
+    "category": "新闻",
+    "url": "http://l1.weihai.tv:8081/hls/xwgb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "枣庄新闻广播",
+    "category": "新闻",
+    "url": "rtmp://juyunlive.juyun.tv/live/05882162",
+    "isok": false
+  },
+  {
+    "title": "天津新闻广播",
+    "category": "新闻",
+    "url": "http://satellitepull.cnr.cn/live/wxtjxwgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "泉州新闻频道",
+    "category": "新闻",
+    "url": "http://live.qztvxwgj.com/live/fm889.m3u8",
+    "isok": true
+  },
+  {
+    "title": "湖南新闻广播",
+    "category": "新闻",
+    "url": "http://satellitepull.cnr.cn/live/wx32hunxwgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "益阳新闻广播",
+    "category": "新闻",
+    "url": "rtmp://fms.yyrtv.com/livepkgr/fm997",
+    "isok": false
+  },
+  {
+    "title": "象山广播电台",
+    "category": "新闻",
+    "url": "rtmp://v.xstv.net/live/1111",
+    "isok": false
+  },
+  {
+    "title": "合肥新闻综合广播",
+    "category": "新闻",
+    "url": "http://120.193.102.2/hfradio/hfdta256/index.m3u8",
+    "isok": false
+  },
+  {
+    "title": "黄山广播电台",
+    "category": "新闻",
+    "url": "http://183.166.128.82/8j7GC9s/200/live.m3u8",
+    "isok": false
+  },
+  {
+    "title": "邯郸新闻广播",
+    "category": "新闻",
+    "url": "rtmp://mms.hdbs.cn:1937/live/xwzhgbzb",
+    "isok": false
+  },
+  {
+    "title": "郑州新闻广播",
+    "category": "新闻",
+    "url": "http://living.muzhifm.com/muzhifm/zhenzhou2_fm986.m3u8?auth_key=1649670265-0-0-8b8aa25907d92a7e98c868aa2593f3e5",
+    "isok": true
+  },
+  {
+    "title": "黑龙江新闻广播",
+    "category": "新闻",
+    "url": "http://satellitepull.cnr.cn/live/wx32hljxwgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "延边卫星广播",
+    "category": "新闻",
+    "url": "http://live.ybtvyun.com/audio/s10006-fm983/index.m3u8",
+    "isok": true
+  },
+  {
+    "title": "四川新闻广播",
+    "category": "新闻",
+    "url": "http://satellitepull.cnr.cn/live/wxscjjgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "成都新闻广播",
+    "category": "新闻",
+    "url": "http://livecdn.cdbs.com.cn/fm998.flv/playlist.m3u8",
+    "isok": false
+  },
+  {
+    "title": "新疆综合广播",
+    "category": "新闻",
+    "url": "http://satellitepull.cnr.cn/live/wxxjlsgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "新疆新闻广播",
+    "category": "新闻",
+    "url": "http://satellitepull.cnr.cn/live/wxxjxwgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "巴州新闻频率",
+    "category": "新闻",
+    "url": "rtmp://218.31.132.195/live/FMxinwen",
+    "isok": false
+  },
+  {
+    "title": "宁夏新闻广播",
+    "category": "新闻",
+    "url": "http://satellitepull.cnr.cn/live/wxnxxwgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "贵州新闻广播",
+    "category": "新闻",
+    "url": "rtmp://hls1.gzstv.com/livegztv/xinwen",
+    "isok": false
+  },
+  {
+    "title": "内蒙古蒙语广播",
+    "category": "新闻",
+    "url": "http://satellitepull.cnr.cn/live/wx32nmghlbemygb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "内蒙古汉语新闻综合广播",
+    "category": "新闻",
+    "url": "http://satellitepull.cnr.cn/live/wx32nmghyzhxwgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "内蒙古新闻广播",
+    "category": "新闻",
+    "url": "http://satellitepull.cnr.cn/live/wx32nmglyzs/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "南京新闻调频FM96.6",
+    "category": "新闻",
+    "url": "http://hls.njgb.com/live_hls/1/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "西安新闻广播",
+    "category": "新闻",
+    "url": "http://stream3.xiancity.cn/1/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "沈阳新闻广播",
+    "category": "新闻",
+    "url": "http://lms.csytv.com/Live/118/live/livestream.m3u8",
+    "isok": true
+  },
+  {
+    "title": "辽宁新闻广播（AM1089）",
+    "category": "新闻",
+    "url": "http://satellitepull.cnr.cn/live/wxlnzhgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "海南新闻广播",
+    "category": "新闻",
+    "url": "http://satellitepull.cnr.cn/live/wxhainxwgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "河北新闻广播",
+    "category": "新闻",
+    "url": "rtmp://mms.hebradio.com/live/21",
+    "isok": false
+  },
+  {
+    "title": "常德新闻广播",
+    "category": "新闻",
+    "url": "rtmp://www.cdqmw.cn:1935/live/xwdt",
+    "isok": false
+  },
+  {
+    "title": "南昌新闻广播",
+    "category": "新闻",
+    "url": "http://liveplay.nctv.net.cn/lj3NRe2/48/o1mhjgN.m3u8",
+    "isok": false
+  },
+  {
+    "title": "漯河新闻广播",
+    "category": "新闻",
+    "url": "rtmp://221.15.43.203:1935/live/zhgb",
+    "isok": false
+  },
+  {
+    "title": "滁州新闻综合广播",
+    "category": "新闻",
+    "url": "http://183.167.193.45:1935/live/cztvxw/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "保定新闻广播",
+    "category": "新闻",
+    "url": "http://cnlive.cnr.cn/hls/bdxwgb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "唐山新闻综合广播",
+    "category": "新闻",
+    "url": "http://live1.tsr.he.cn:1936/live/tsfm3/128k/tzwj_video.m3u8",
+    "isok": true
+  },
+  {
+    "title": "镇江新闻广播",
+    "category": "新闻",
+    "url": "http://live.zjmc.tv/4/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "洛阳新闻广播",
+    "category": "新闻",
+    "url": "http://live1.lytv.com.cn:1935/live/FM881/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "南京新闻综合广播",
+    "category": "新闻",
+    "url": "http://hls.njgb.com/live_hls/1/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "FM97.0南通电台新闻广播",
+    "category": "新闻",
+    "url": "http://nttv.wshls.homecdn.com/live/7cd1.m3u8",
+    "isok": true
+  },
+  {
+    "title": "临沂新闻综合广播",
+    "category": "新闻",
+    "url": "http://live.ilinyi.net/channels/tvie/xinwenguangbo/flv:128k/live",
+    "isok": true
+  },
+  {
+    "title": "中央台香港之声",
+    "category": "新闻",
+    "url": "http://rtmpcnr008.cnr.cn/live/xgzs/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "永州之声",
+    "category": "新闻",
+    "url": "http://stream.21ytv.com/948/sd/live.m3u8",
+    "isok": false
+  },
+  {
+    "title": "浙江新闻广播新锐988",
+    "category": "新闻",
+    "url": "http://yf.m.l.cztv.com/channels/lantian/audio08/128k.m3u8",
+    "isok": true
+  },
+  {
+    "title": "张家口新闻综合广播",
+    "category": "新闻",
+    "url": "http://nlive.zjkgdcs.com:8091/live/xwgb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "吴江电台新闻综合广播和谐969",
+    "category": "新闻",
+    "url": "http://radio.wyol.com.cn:8134/hls-live/livepkgr/_definst_/wslhevent/hls_pindao_1_100.m3u8",
+    "isok": false
+  },
+  {
+    "title": "中国国际广播电台南海之声",
+    "category": "新闻",
+    "url": "http://sk.cri.cn/nhzs.m3u8",
+    "isok": true
+  },
+  {
+    "title": "湖南NEWS938潇湘之声",
+    "category": "新闻",
+    "url": "rtmp://39.108.163.99:1935/live/fm938",
+    "isok": false
+  },
+  {
+    "title": "银川新闻综合广播",
+    "category": "新闻",
+    "url": "http://stream.ycgbtv.com.cn/ycxwpl/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "龙广新闻台",
+    "category": "新闻",
+    "url": "http://satellitepull.cnr.cn/live/wx32hljxwgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "黄冈新闻综合广播",
+    "category": "新闻",
+    "url": "http://huanggang.fmlive.cjyun.org/audio/s10120-xwzhpl.m3u8",
+    "isok": true
+  },
+  {
+    "title": "延边新闻广播",
+    "category": "新闻",
+    "url": "http://live.ybtvyun.com/audio/s10006-fm983/index.m3u8",
+    "isok": true
+  },
+  {
+    "title": "亳州新闻综合广播",
+    "category": "新闻",
+    "url": "rtmp://218.22.251.12/tslsChannelLive/Sz2aZuQ/live",
+    "isok": false
+  },
+  {
+    "title": "随州新闻广播",
+    "category": "新闻",
+    "url": "rtmp://suizhou.live.cjyun.org/video/s10145-szxwpl1",
+    "isok": false
+  },
+  {
+    "title": "湘潭新闻广播",
+    "category": "新闻",
+    "url": "http://live.hnxttv.com:9601/live/radiomg/100K/tzwj_video.m3u8",
+    "isok": true
+  },
+  {
+    "title": "昆山新闻交通频率",
+    "category": "新闻",
+    "url": "http://streamer.ksntv.com.cn/live/1cfc9c8cd29d422d9c6db3025bd35879?fmt",
+    "isok": false
+  },
+  {
+    "title": "新昌广播电台天姥之声",
+    "category": "新闻",
+    "url": "http://l1.cztvcloud.com/channels/lantian/sx3_xinchangaudio01/128k.m3u8",
+    "isok": false
+  },
+  {
+    "title": "江油人民广播电台阳光调频",
+    "category": "新闻",
+    "url": "http://vod.scjygd.com:1935/live/fm976/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "张掖新闻综合广播",
+    "category": "新闻",
+    "url": "http://202.100.86.157:8500/hls/c03.m3u8",
+    "isok": false
+  },
+  {
+    "title": "庆阳新闻综合广播",
+    "category": "新闻",
+    "url": "http://stream.gsqytv.com.cn/xwgb1/sd/live.m3u8",
+    "isok": false
+  },
+  {
+    "title": "龙岩电台新闻综合广播",
+    "category": "新闻",
+    "url": "rtmp://218.86.89.200/live/925",
+    "isok": false
+  },
+  {
+    "title": "六安新闻综合广播",
+    "category": "新闻",
+    "url": "http://live.china-latv.com/channel10/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "中央台音乐之声",
+    "category": "音乐",
+    "url": "http://rtmpcnr003.cnr.cn/live/yyzs/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "北京古典音乐广播",
+    "category": "音乐",
+    "url": "http://cnlive.cnr.cn/hls/bjgdyygb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "北京怀旧金曲广播",
+    "category": "音乐",
+    "url": "http://cnlive.cnr.cn/hls/bjhjjqgb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "北京音乐广播",
+    "category": "音乐",
+    "url": "http://cnlive.cnr.cn/hls/bjyygb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "安徽音乐广播",
+    "category": "音乐",
+    "url": "http://satellitepull.cnr.cn/live/wxahyygb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "重庆音乐广播",
+    "category": "音乐",
+    "url": "http://satellitepull.cnr.cn/live/wxcqyygb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "山东广播音乐频道",
+    "category": "音乐",
+    "url": "http://cnlive.cnr.cn/hls/sdcszy.m3u8",
+    "isok": false
+  },
+  {
+    "title": "河南音乐广播",
+    "category": "音乐",
+    "url": "http://stream.hndt.com/live/yinyue/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "河南电台Myradio",
+    "category": "音乐",
+    "url": "http://stream.hndt.com/live/yingshi/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "广州金曲广播",
+    "category": "音乐",
+    "url": "http://23436.liveplay.myqcloud.com/live/23436_794588efa9a011e892905cb9018cf0d4.m3u8",
+    "isok": false
+  },
+  {
+    "title": "广东音乐之声",
+    "category": "音乐",
+    "url": "http://satellitepull.cnr.cn/live/wxgdyyzs/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "深圳音乐频率飞扬971",
+    "category": "音乐",
+    "url": "http://sztv-hls.cutv.com/bPHSw12/64/d2nbgH0.m3u8",
+    "isok": false
+  },
+  {
+    "title": "江门旅游音乐台",
+    "category": "音乐",
+    "url": "rtmp://tideweblive.jmtv.cn/tslsChannelLive/141Ldor/live",
+    "isok": false
+  },
+  {
+    "title": "江苏音乐广播",
+    "category": "音乐",
+    "url": "http://lzlive.vojs.cn/jAmO6Ng/92/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "南京音乐广播",
+    "category": "音乐",
+    "url": "http://hls.njgb.com/live_hls/4/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "浙江音乐调频",
+    "category": "音乐",
+    "url": "http://yf.m.l.cztv.com/channels/lantian/audio01/128k.m3u8",
+    "isok": true
+  },
+  {
+    "title": "湖北音乐广播",
+    "category": "音乐",
+    "url": "http://live7.hbtv.com.cn/masvod/hbjdyygb_q1/index.m3u8",
+    "isok": true
+  },
+  {
+    "title": "楚天音乐广播",
+    "category": "音乐",
+    "url": "http://live7.hbtv.com.cn/masvod/ctyygb_q1/index.m3u8",
+    "isok": true
+  },
+  {
+    "title": "宜昌交通音乐广播",
+    "category": "音乐",
+    "url": "rtmp://zb.3xgd.com:1935/FM/jtt",
+    "isok": false
+  },
+  {
+    "title": "十堰交通音乐台",
+    "category": "音乐",
+    "url": "rtmp://live.aisy.com/aisy/c006",
+    "isok": false
+  },
+  {
+    "title": "济宁音乐广播",
+    "category": "音乐",
+    "url": "rtmp://lives.jnnews.tv/audio/s10001-1070",
+    "isok": false
+  },
+  {
+    "title": "抚州交通音乐广播",
+    "category": "音乐",
+    "url": "rtmp://111.75.179.195:1935/live/fz4",
+    "isok": false
+  },
+  {
+    "title": "江西音乐广播",
+    "category": "音乐",
+    "url": "rtmp://111.75.206.134/live/yygb",
+    "isok": false
+  },
+  {
+    "title": "南京热力调频",
+    "category": "音乐",
+    "url": "http://hls.njgb.com/live_hls/4/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "合肥文艺广播",
+    "category": "音乐",
+    "url": "http://120.193.102.2/hfradio/hfdta178/index.m3u8",
+    "isok": false
+  },
+  {
+    "title": "中国国际广播电台劲曲调频",
+    "category": "音乐",
+    "url": "http://sk.cri.cn/887.m3u8",
+    "isok": true
+  },
+  {
+    "title": "郑州音乐广播",
+    "category": "音乐",
+    "url": "http://living.muzhifm.com/muzhifm/zhenzhou2_fm944.m3u8?auth_key=1649670265-0-0-dd65fe46e9d4686f8bd6210a491bd683",
+    "isok": true
+  },
+  {
+    "title": "沈阳音乐广播",
+    "category": "音乐",
+    "url": "http://lms.csytv.com/Live/121/live/livestream.m3u8",
+    "isok": true
+  },
+  {
+    "title": "黑龙江音乐广播",
+    "category": "音乐",
+    "url": "http://satellitepull.cnr.cn/live/wx32hljyygb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "四川珉江音乐台",
+    "category": "音乐",
+    "url": "http://satellitepull.cnr.cn/live/wxscmjyyt/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "攀枝花音乐调频",
+    "category": "音乐",
+    "url": "http://zb.pzhgd.com:9091/live/fm885.m3u8",
+    "isok": false
+  },
+  {
+    "title": "贵州音乐广播",
+    "category": "音乐",
+    "url": "rtmp://hls1.gzstv.com/livegztv/yinyue",
+    "isok": false
+  },
+  {
+    "title": "内蒙古音乐之声",
+    "category": "音乐",
+    "url": "http://satellitepull.cnr.cn/live/wx32nmgyygb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "佛山电台FM92.4",
+    "category": "音乐",
+    "url": "http://live-hls.fs.linker.cc/fshs/fs_ts_03.m3u8",
+    "isok": true
+  },
+  {
+    "title": "西安音乐广播",
+    "category": "音乐",
+    "url": "http://stream3.xiancity.cn/4/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "辽宁音乐广播（FM102.9）",
+    "category": "音乐",
+    "url": "http://satellitepull.cnr.cn/live/wxlnwygb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "中国国际广播电台都市流行频道",
+    "category": "音乐",
+    "url": "http://satellitepull.cnr.cn/live/wxgjlxyy/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "中国国际广播电台怀旧金曲频道",
+    "category": "音乐",
+    "url": "http://sk.cri.cn/oldies.m3u8",
+    "isok": false
+  },
+  {
+    "title": "湖南音乐之声超级893",
+    "category": "音乐",
+    "url": "rtmp://39.108.163.99:1935/live/fm893",
+    "isok": false
+  },
+  {
+    "title": "天津古典音乐广播",
+    "category": "音乐",
+    "url": "http://cnlive.cnr.cn/hls/tjgdyygb.m3u8",
+    "isok": false
+  },
+  {
+    "title": "河北音乐广播",
+    "category": "音乐",
+    "url": "rtmp://mms.hebradio.com/live/26",
+    "isok": false
+  },
+  {
+    "title": "乐田1069",
+    "category": "音乐",
+    "url": "rtmp://39.108.163.99:1935/live/fm1069",
+    "isok": false
+  },
+  {
+    "title": "唐山音乐广播",
+    "category": "音乐",
+    "url": "http://live1.tsr.he.cn:1936/live/tsfm2/128k/tzwj_video.m3u8",
+    "isok": true
+  },
+  {
+    "title": "钦州电台音乐广播",
+    "category": "音乐",
+    "url": "http://live.gxqztv.com/cspd3/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "南京汽车音乐广播",
+    "category": "音乐",
+    "url": "http://hls.njgb.com/live_hls/4/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "FM92.9南通音乐交通广播",
+    "category": "音乐",
+    "url": "http://nttv.wshls.homecdn.com/live/7ccf.m3u8",
+    "isok": true
+  },
+  {
+    "title": "怀集音乐之声",
+    "category": "音乐",
+    "url": "http://cnlive.cnr.cn/hls/hjyyzs.m3u8",
+    "isok": true
+  },
+  {
+    "title": "中央台中国民乐广播",
+    "category": "音乐",
+    "url": "http://rtmpcnr021.cnr.cn/live/zgmy/playlist.m3u8",
+    "isok": false
+  },
+  {
+    "title": "中央台古典音乐广播",
+    "category": "音乐",
+    "url": "http://rtmpcnr022.cnr.cn/live/gdyy/playlist.m3u8",
+    "isok": false
+  },
+  {
+    "title": "张家口品味986音乐广播",
+    "category": "音乐",
+    "url": "http://nlive.zjkgdcs.com:8091/live/pwgb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "FM90.7威海音乐时尚广播",
+    "category": "音乐",
+    "url": "http://l1.weihai.tv:8081/hls/3B4EC2bCl3.m3u8",
+    "isok": true
+  },
+  {
+    "title": "镇江音乐广播",
+    "category": "音乐",
+    "url": "http://live.zjmc.tv/6/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "南通音乐广播",
+    "category": "音乐",
+    "url": "http://nttv.wshls.homecdn.com/live/7ccd.m3u8",
+    "isok": true
+  },
+  {
+    "title": "邯郸音乐广播",
+    "category": "音乐",
+    "url": "rtmp://mms.hdbs.cn:1937/live/hdyygbzb",
+    "isok": false
+  },
+  {
+    "title": "枣庄音乐广播",
+    "category": "音乐",
+    "url": "rtmp://juyunlive.juyun.tv/live/05881265",
+    "isok": false
+  },
+  {
+    "title": "乌鲁木齐MYFM1039音乐广播",
+    "category": "音乐",
+    "url": "http://aod.xjbs.com.cn:1935/live/1039/32K/tzwj_video.m3u8",
+    "isok": true
+  },
+  {
+    "title": "宁夏音乐广播",
+    "category": "音乐",
+    "url": "http://satellitepull.cnr.cn/live/wxnxyygb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "海南音乐广播",
+    "category": "音乐",
+    "url": "http://satellitepull.cnr.cn/live/wxhainyygb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "河北私家车广播",
+    "category": "音乐",
+    "url": "rtmp://mms.hebradio.com/live/24",
+    "isok": false
+  },
+  {
+    "title": "舟山汽车音乐广播",
+    "category": "音乐",
+    "url": "http://live.wifizs.cn/fm91/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "湖南FM893汽车音乐电台",
+    "category": "音乐",
+    "url": "rtmp://39.108.163.99:1935/live/fm893",
+    "isok": false
+  },
+  {
+    "title": "湖南FM1069年代音乐台",
+    "category": "音乐",
+    "url": "rtmp://39.108.163.99:1935/live/fm1069",
+    "isok": false
+  },
+  {
+    "title": "湖南FM975摩登音乐台",
+    "category": "音乐",
+    "url": "rtmp://39.108.163.99:1935/live/fm975",
+    "isok": false
+  },
+  {
+    "title": "重庆巴渝之声",
+    "category": "音乐",
+    "url": "http://bananlive.cbg.cn/channel4/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "东莞电台音乐广播",
+    "category": "音乐",
+    "url": "http://mtv.sun0769.com/dgrtv1/mp4:tv12/index.m3u8",
+    "isok": false
+  },
+  {
+    "title": "惠州电台音乐广播",
+    "category": "音乐",
+    "url": "http://livehuiz.sobeycache.com/live/gb3.m3u8?auth_key=1593747098-0-0-64875592349d23b5cb8d7cead4b57502",
+    "isok": true
+  },
+  {
+    "title": "广州电台MYFM880都市生活广播",
+    "category": "音乐",
+    "url": "http://23436.liveplay.myqcloud.com/live/23436_146d13b4a9a111e892905cb9018cf0d4.m3u8",
+    "isok": false
+  },
+  {
+    "title": "银川都市经济广播",
+    "category": "音乐",
+    "url": "http://stream.ycgbtv.com.cn/ycdupl/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "合肥汽车音乐广播",
+    "category": "音乐",
+    "url": "http://120.193.102.2/hfradio/hfdta178/index.m3u8",
+    "isok": false
+  },
+  {
+    "title": "龙广音乐台",
+    "category": "音乐",
+    "url": "http://satellitepull.cnr.cn/live/wx32hljyygb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "HITFM成都台FM88.7",
+    "category": "音乐",
+    "url": "http://livecdn.cdbs.com.cn/fm963.flv/playlist.m3u8",
+    "isok": false
+  },
+  {
+    "title": "成都广播电台经典946",
+    "category": "音乐",
+    "url": "http://livecdn.cdbs.com.cn/fm946.flv/playlist.m3u8",
+    "isok": false
+  },
+  {
+    "title": "贵阳音乐广播",
+    "category": "音乐",
+    "url": "http://hls.qguiyang.com/FM909/800/4blFv.m3u8",
+    "isok": false
+  },
+  {
+    "title": "楚雄电台音乐广播",
+    "category": "音乐",
+    "url": "http://live.cxgb.net:1935/live/live101/64K/tzwj_video.m3u8",
+    "isok": false
+  },
+  {
+    "title": "经典1042蚌埠经济广播",
+    "category": "音乐",
+    "url": "http://newvod.ahbbtv.com:1935/live/jjpl/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "淮北音乐广播",
+    "category": "音乐",
+    "url": "http://live1.0561rtv.com:9600/live/live7/64K/tzwj_video.m3u8",
+    "isok": false
+  },
+  {
+    "title": "周口音乐广播",
+    "category": "音乐",
+    "url": "rtmp://tv.zkxww.com:1935/broadcast/1004.stream_aac",
+    "isok": false
+  },
+  {
+    "title": "天津滨海音乐广播",
+    "category": "音乐",
+    "url": "http://60.30.52.41/live/FM100.5/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "北京交通广播",
+    "category": "交通",
+    "url": "http://cnlive.cnr.cn/hls/bjjtgb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "安徽交通广播",
+    "category": "交通",
+    "url": "http://satellitepull.cnr.cn/live/wxahjtgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "重庆交通广播",
+    "category": "交通",
+    "url": "http://satellitepull.cnr.cn/live/wxcqjtgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "山东广播交通音乐之声",
+    "category": "交通",
+    "url": "http://cnlive.cnr.cn/hls/sdjtgb.m3u8",
+    "isok": false
+  },
+  {
+    "title": "河南交通广播",
+    "category": "交通",
+    "url": "http://stream.hndt.com/live/jiaotong/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "广州经济交通广播",
+    "category": "交通",
+    "url": "http://23436.liveplay.myqcloud.com/live/23436_80aefc0ca9a011e892905cb9018cf0d4.m3u8",
+    "isok": false
+  },
+  {
+    "title": "东莞交通音乐频道",
+    "category": "交通",
+    "url": "http://mtv.sun0769.com/dgrtv1/mp4:tv11/index.m3u8",
+    "isok": false
+  },
+  {
+    "title": "深圳交通频率快乐1062",
+    "category": "交通",
+    "url": "http://sztv-hls.cutv.com/171m21B/64/m7e1g10.m3u8",
+    "isok": false
+  },
+  {
+    "title": "江苏交通广播FM101.1",
+    "category": "交通",
+    "url": "http://lzlive.vojs.cn/4TaHTeL/92/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "南京交通广播",
+    "category": "交通",
+    "url": "http://hls.njgb.com/live_hls/2/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "张家港交通广播",
+    "category": "交通",
+    "url": "rtmp://wbqsvr.zjgonline.com.cn:1935/live/jiaotong",
+    "isok": false
+  },
+  {
+    "title": "浙江交通之声",
+    "category": "交通",
+    "url": "http://yf.m.l.cztv.com/channels/lantian/audio04/128k.m3u8",
+    "isok": true
+  },
+  {
+    "title": "湖北交通广播",
+    "category": "交通",
+    "url": "http://live7.hbtv.com.cn/masvod/hbsjcgb_q1/index.m3u8",
+    "isok": true
+  },
+  {
+    "title": "黄石交通广播",
+    "category": "交通",
+    "url": "http://www.hsgd.net.cn:8080/hsradio_jtjj.flv",
+    "isok": false
+  },
+  {
+    "title": "黄冈交通音乐台",
+    "category": "交通",
+    "url": "http://huanggang.fmlive.cjyun.org/audio/s10120-jtyypl.m3u8",
+    "isok": true
+  },
+  {
+    "title": "济宁交通广播",
+    "category": "交通",
+    "url": "rtmp://lives.jnnews.tv/audio/s10001-1042",
+    "isok": false
+  },
+  {
+    "title": "威海交通广播",
+    "category": "交通",
+    "url": "http://l1.weihai.tv:8081/hls/RL9bbRfu7y.m3u8",
+    "isok": false
+  },
+  {
+    "title": "枣庄交通广播",
+    "category": "交通",
+    "url": "rtmp://juyunlive.juyun.tv/live/05880784",
+    "isok": false
+  },
+  {
+    "title": "泉州交通频道",
+    "category": "交通",
+    "url": "http://live.qztvxwgj.com/live/fm904.m3u8",
+    "isok": true
+  },
+  {
+    "title": "湖南交通广播",
+    "category": "交通",
+    "url": "rtmp://39.108.163.99:1935/live/fm918",
+    "isok": false
+  },
+  {
+    "title": "益阳交通广播",
+    "category": "交通",
+    "url": "rtmp://fms.yyrtv.com/livepkgr/fm881",
+    "isok": false
+  },
+  {
+    "title": "娄底交通频道",
+    "category": "交通",
+    "url": "rtmp://mms.ldntv.cn:1935/live/jtgb",
+    "isok": false
+  },
+  {
+    "title": "江西交通广播",
+    "category": "交通",
+    "url": "rtmp://111.75.206.134/live/jtgb",
+    "isok": false
+  },
+  {
+    "title": "合肥交通广播",
+    "category": "交通",
+    "url": "http://120.193.102.2/hfradio/hfdta134/index.m3u8",
+    "isok": false
+  },
+  {
+    "title": "黄山交通旅游广播",
+    "category": "交通",
+    "url": "http://183.166.128.82/6fMjp2Q/200/live.m3u8",
+    "isok": false
+  },
+  {
+    "title": "蚌埠交通文艺广播",
+    "category": "交通",
+    "url": "http://newvod.ahbbtv.com:1935/live/jtpl/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "邯郸交通广播",
+    "category": "交通",
+    "url": "rtmp://mms.hdbs.cn:1937/live/hdjtgbzb",
+    "isok": false
+  },
+  {
+    "title": "郑州都市广播",
+    "category": "交通",
+    "url": "http://living.muzhifm.com/muzhifm/zhenzhou2_fm912.m3u8?auth_key=1649670265-0-0-afe442a77ee96c4c51fb9a1d24cfc14d",
+    "isok": true
+  },
+  {
+    "title": "黑龙江交通广播",
+    "category": "交通",
+    "url": "http://satellitepull.cnr.cn/live/wx32hljjtgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "四川交通广播",
+    "category": "交通",
+    "url": "http://satellitepull.cnr.cn/live/wxscjtgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "成都交通广播",
+    "category": "交通",
+    "url": "http://livecdn.cdbs.com.cn/fm914.flv/playlist.m3u8",
+    "isok": false
+  },
+  {
+    "title": "新疆交通广播",
+    "category": "交通",
+    "url": "http://satellitepull.cnr.cn/live/wxxjjtgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "巴州交通频率",
+    "category": "交通",
+    "url": "rtmp://218.31.132.195/live/FMjiaotong",
+    "isok": false
+  },
+  {
+    "title": "贵州交通广播",
+    "category": "交通",
+    "url": "rtmp://hls1.gzstv.com/livegztv/jiaotong",
+    "isok": false
+  },
+  {
+    "title": "内蒙古交通之声",
+    "category": "交通",
+    "url": "http://satellitepull.cnr.cn/live/wx32nmgjtgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "羊城交通台",
+    "category": "交通",
+    "url": "http://satellitepull.cnr.cn/live/wxgdycjtt/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "西安交通旅游广播",
+    "category": "交通",
+    "url": "http://stream3.xiancity.cn/5/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "沈阳交通广播",
+    "category": "交通",
+    "url": "http://lms.csytv.com/Live/121/live/livestream.m3u8",
+    "isok": true
+  },
+  {
+    "title": "贵阳交通之声",
+    "category": "交通",
+    "url": "http://hls.qguiyang.com/FM1027/800/0apFv1.m3u8",
+    "isok": false
+  },
+  {
+    "title": "FM105.7 Uradio汽车优悦广播",
+    "category": "交通",
+    "url": "http://satellitepull.cnr.cn/live/wxnyzs/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "辽宁交通广播（FM97.5）",
+    "category": "交通",
+    "url": "http://satellitepull.cnr.cn/live/wxlnjtgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "通化交通文艺台",
+    "category": "交通",
+    "url": "http://stream4.jlntv.cn/aac_thjt/playlist.m3u8",
+    "isok": false
+  },
+  {
+    "title": "延边交通文艺台",
+    "category": "交通",
+    "url": "http://live.ybtvyun.com/audio/s10006-fm1059/index.m3u8",
+    "isok": true
+  },
+  {
+    "title": "湖州交通经济频率",
+    "category": "交通",
+    "url": "http://live.hzitv.cn/tslslive/LFGQyAN/hls/live_sd.m3u8",
+    "isok": true
+  },
+  {
+    "title": "海南交通广播",
+    "category": "交通",
+    "url": "http://satellitepull.cnr.cn/live/wxhainjtgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "河北交通广播",
+    "category": "交通",
+    "url": "rtmp://mms.hebradio.com/live/23",
+    "isok": false
+  },
+  {
+    "title": "漯河交通音乐广播",
+    "category": "交通",
+    "url": "rtmp://221.15.43.203:1935/live/jtgb",
+    "isok": false
+  },
+  {
+    "title": "滁州交通音乐广播",
+    "category": "交通",
+    "url": "http://183.167.193.45:1935/live/cztvjt/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "沧州交通音乐广播",
+    "category": "交通",
+    "url": "http://vod.czgd.tv:1935/guangbo/gb02/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "保定交通广播",
+    "category": "交通",
+    "url": "http://cnlive.cnr.cn/hls/bdjtgb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "安庆交通音乐广播",
+    "category": "交通",
+    "url": "rtmp://live.aqbtv.cn:9600/live/111_106",
+    "isok": false
+  },
+  {
+    "title": "镇江交通广播",
+    "category": "交通",
+    "url": "http://live.zjmc.tv/5/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "洛阳交通广播",
+    "category": "交通",
+    "url": "http://live1.lytv.com.cn:1935/live/FM927/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "合肥电台徽商广播",
+    "category": "交通",
+    "url": "http://120.193.102.2/hfradio/hfdta234/index.m3u8",
+    "isok": false
+  },
+  {
+    "title": "临沂交通音乐广播",
+    "category": "交通",
+    "url": "http://live.ilinyi.net/channels/tvie/jiaotongguangbo/flv:128k/live",
+    "isok": true
+  },
+  {
+    "title": "南京私家车广播",
+    "category": "交通",
+    "url": "http://cnlive.cnr.cn/hls/njjtgb.m3u8",
+    "isok": false
+  },
+  {
+    "title": "中国高速公路交通广播",
+    "category": "交通",
+    "url": "http://rtmpcnr016.cnr.cn/live/gsgljtgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "张家口交通广播",
+    "category": "交通",
+    "url": "http://nlive.zjkgdcs.com:8091/live/jtgb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "吴江电台交通音乐广播动感891",
+    "category": "交通",
+    "url": "http://30515.hlsplay.aodianyun.com/lms_30515/radio_channel_92.m3u8",
+    "isok": true
+  },
+  {
+    "title": "镇江动感私家车电台",
+    "category": "交通",
+    "url": "http://live.zjmc.tv/9/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "万州交通广播",
+    "category": "交通",
+    "url": "http://123.146.162.24:8013/tslslive/gBEcw39/hls/live_sd.m3u8",
+    "isok": true
+  },
+  {
+    "title": "湖北私家车广播",
+    "category": "交通",
+    "url": "http://live7.hbtv.com.cn/masvod/hbsjcgb_q1/index.m3u8",
+    "isok": true
+  },
+  {
+    "title": "南通私家车广播",
+    "category": "交通",
+    "url": "http://nttv.wshls.homecdn.com/live/7ccb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "惠州电台交通广播",
+    "category": "交通",
+    "url": "http://livehuiz.sobeycache.com/live/gb2.m3u8?auth_key=1593747097-0-0-c023151174da2177e5bf6bd118b60825",
+    "isok": true
+  },
+  {
+    "title": "广州汽车音乐电台",
+    "category": "交通",
+    "url": "http://23436.liveplay.myqcloud.com/live/23436_794588efa9a011e892905cb9018cf0d4.m3u8",
+    "isok": false
+  },
+  {
+    "title": "银川交通音乐广播",
+    "category": "交通",
+    "url": "http://stream.ycgbtv.com.cn/ycjt/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "靖江电台交通广播",
+    "category": "交通",
+    "url": "http://cnlive.cnr.cn/hls/jingjiangjiaotongguangbo.m3u8",
+    "isok": false
+  },
+  {
+    "title": "四川私家车925电台",
+    "category": "交通",
+    "url": "http://satellitepull.cnr.cn/live/wxsc925/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "龙广交通台",
+    "category": "交通",
+    "url": "http://satellitepull.cnr.cn/live/wx32hljjtgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "常德交通广播",
+    "category": "交通",
+    "url": "rtmp://www.cdqmw.cn:1935/live/jtxw",
+    "isok": false
+  },
+  {
+    "title": "贵阳交通广播",
+    "category": "交通",
+    "url": "http://hls.qguiyang.com/FM1027/800/0apFv1.m3u8",
+    "isok": false
+  },
+  {
+    "title": "延边交通文艺广播",
+    "category": "交通",
+    "url": "http://live.ybtvyun.com/audio/s10006-fm1059/index.m3u8",
+    "isok": true
+  },
+  {
+    "title": "衡水交通广播",
+    "category": "交通",
+    "url": "http://cnlive.cnr.cn/hls/hensjtgb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "临沂财富932私家车广播",
+    "category": "交通",
+    "url": "http://live.ilinyi.net/channels/tvie/caifuzhisheng/flv:128k/live",
+    "isok": true
+  },
+  {
+    "title": "黑龙江私家车广播",
+    "category": "交通",
+    "url": "http://satellitepull.cnr.cn/live/wx32hljsjcgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "淮北交通广播",
+    "category": "交通",
+    "url": "http://live1.0561rtv.com:9600/live/live6/64K/tzwj_video.m3u8",
+    "isok": false
+  },
+  {
+    "title": "宿州交通广播",
+    "category": "交通",
+    "url": "http://36.34.121.90:8800/tslslive/fk7Gi4I/hls/live_sd.m3u8",
+    "isok": false
+  },
+  {
+    "title": "周口交通广播",
+    "category": "交通",
+    "url": "rtmp://tv.zkxww.com:1935/broadcast/1003.stream_aac",
+    "isok": false
+  },
+  {
+    "title": "亳州交通音乐广播",
+    "category": "交通",
+    "url": "rtmp://218.22.251.12/tslsChannelLive/nLMlwiZ/live",
+    "isok": false
+  },
+  {
+    "title": "恩施交通音乐广播",
+    "category": "交通",
+    "url": "http://enshi.live.cjyun.org/video/s10070-xdzs.flv",
+    "isok": true
+  },
+  {
+    "title": "随州交通广播",
+    "category": "交通",
+    "url": "rtmp://suizhou.live.cjyun.org/video/s10145-szjtpl1",
+    "isok": false
+  },
+  {
+    "title": "湘潭交通广播",
+    "category": "交通",
+    "url": "http://live.hnxttv.com:9601/live/radiojt/100K/tzwj_video.m3u8",
+    "isok": true
+  },
+  {
+    "title": "邵阳广播交通频道",
+    "category": "交通",
+    "url": "http://ums.sytv.net.cn//live/radioyy_11745/tzwj_video.m3u8",
+    "isok": false
+  },
+  {
+    "title": "庆阳交通广播",
+    "category": "交通",
+    "url": "http://stream.gsqytv.com.cn/jtgb1/sd/live.m3u8",
+    "isok": false
+  },
+  {
+    "title": "内江电台交通广播",
+    "category": "交通",
+    "url": "http://njzb.scnj.tv:8091/live/jtyygb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "嘉峪关交通广播",
+    "category": "交通",
+    "url": "rtmp://111.11.179.22/live/live7",
+    "isok": false
+  },
+  {
+    "title": "六安交通音乐广播",
+    "category": "交通",
+    "url": "http://live.china-latv.com/channel9/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "中央台经济之声",
+    "category": "经济",
+    "url": "http://rtmpcnr002.cnr.cn/live/jjzs/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "安徽经济广播",
+    "category": "经济",
+    "url": "http://satellitepull.cnr.cn/live/wxahjjgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "重庆经济广播",
+    "category": "经济",
+    "url": "http://satellitepull.cnr.cn/live/wxcqjjgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "山东经济广播",
+    "category": "经济",
+    "url": "http://cnlive.cnr.cn/hls/sdjjgb.m3u8",
+    "isok": false
+  },
+  {
+    "title": "山东广播经济频道",
+    "category": "经济",
+    "url": "http://cnlive.cnr.cn/hls/sdjjgb.m3u8",
+    "isok": false
+  },
+  {
+    "title": "河南经济广播",
+    "category": "经济",
+    "url": "http://stream.hndt.com/live/jingji/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "南京经济广播",
+    "category": "经济",
+    "url": "http://hls.njgb.com/live_hls/5/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "FM95浙江财富广播",
+    "category": "经济",
+    "url": "http://yf.m.l.cztv.com/channels/lantian/audio05/128k.m3u8",
+    "isok": true
+  },
+  {
+    "title": "湖北经济广播",
+    "category": "经济",
+    "url": "http://live7.hbtv.com.cn/masvod/hbjjgb_q1/index.m3u8",
+    "isok": true
+  },
+  {
+    "title": "湖南经济广播",
+    "category": "经济",
+    "url": "rtmp://39.108.163.99:1935/live/fm901",
+    "isok": false
+  },
+  {
+    "title": "邯郸经济文艺广播",
+    "category": "经济",
+    "url": "rtmp://mms.hdbs.cn:1937/live/hdyygbzb",
+    "isok": false
+  },
+  {
+    "title": "郑州经济广播",
+    "category": "经济",
+    "url": "http://living.muzhifm.com/muzhifm/zhenzhou2_fm931.m3u8?auth_key=1649670265-0-0-e6cab2be1343c953638939b8b61b2ce4",
+    "isok": true
+  },
+  {
+    "title": "四川经济广播",
+    "category": "经济",
+    "url": "http://satellitepull.cnr.cn/live/wxscjjgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "成都经济广播",
+    "category": "经济",
+    "url": "http://livecdn.cdbs.com.cn/fm1056.flv/playlist.m3u8",
+    "isok": false
+  },
+  {
+    "title": "贵州经济广播",
+    "category": "经济",
+    "url": "rtmp://hls1.gzstv.com/livegztv/jingji",
+    "isok": false
+  },
+  {
+    "title": "内蒙古经济广播",
+    "category": "经济",
+    "url": "http://satellitepull.cnr.cn/live/wx32nmgjjgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "广东电台财经927",
+    "category": "经济",
+    "url": "http://satellitepull.cnr.cn/live/wxgdgsgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "沈阳经济广播",
+    "category": "经济",
+    "url": "http://lms.csytv.com/Live/119/live/livestream.m3u8",
+    "isok": true
+  },
+  {
+    "title": "辽宁经济广播（FM89.5）",
+    "category": "经济",
+    "url": "http://satellitepull.cnr.cn/live/wxlnjjgb/playlist.m3u8",
+    "isok": false
+  },
+  {
+    "title": "广东股市广播",
+    "category": "经济",
+    "url": "http://satellitepull.cnr.cn/live/wxgdgsgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "珠江经济广播FM97.4",
+    "category": "经济",
+    "url": "http://satellitepull.cnr.cn/live/wxgdzjjjt/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "海南经济广播",
+    "category": "经济",
+    "url": "http://satellitepull.cnr.cn/live/wx32hainlygb/playlist.m3u8",
+    "isok": false
+  },
+  {
+    "title": "河北经济广播",
+    "category": "经济",
+    "url": "http://satellitepull.cnr.cn/live/wxhebjjgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "南昌财富之声广播",
+    "category": "经济",
+    "url": "http://liveplay.nctv.net.cn/S01iY7g/48/258e0gi.m3u8",
+    "isok": false
+  },
+  {
+    "title": "舟山交通经济广播",
+    "category": "经济",
+    "url": "http://live.wifizs.cn/fm97/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "保定经济广播",
+    "category": "经济",
+    "url": "http://cnlive.cnr.cn/hls/bdjjgb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "唐山经济生活广播",
+    "category": "经济",
+    "url": "http://live1.tsr.he.cn:1936/live/tsfm5/128k/tzwj_video.m3u8",
+    "isok": true
+  },
+  {
+    "title": "镇江经济广播",
+    "category": "经济",
+    "url": "http://live.zjmc.tv/7/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "洛阳经济广播",
+    "category": "经济",
+    "url": "http://live1.lytv.com.cn:1935/live/FM1065/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "南京广播经济频率",
+    "category": "经济",
+    "url": "http://cnlive.cnr.cn/hls/njjjgb.m3u8",
+    "isok": false
+  },
+  {
+    "title": "FM103南通经济广播",
+    "category": "经济",
+    "url": "http://nttv.wshls.homecdn.com/live/7ccb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "成功992江西财经广播",
+    "category": "经济",
+    "url": "rtmp://111.75.206.134/live/cg992",
+    "isok": false
+  },
+  {
+    "title": "临沂经济广播",
+    "category": "经济",
+    "url": "http://live.ilinyi.net/channels/tvie/dushizhisheng/flv:128k/live",
+    "isok": true
+  },
+  {
+    "title": "德阳经济生活广播",
+    "category": "经济",
+    "url": "http://scdytv.com:1935/live/fm959/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "中央台神州之声",
+    "category": "文艺",
+    "url": "http://rtmpcnr006.cnr.cn/live/szzs/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "中央台文艺之声",
+    "category": "文艺",
+    "url": "http://rtmpcnr010.cnr.cn/live/wyzs/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "北京文艺广播",
+    "category": "文艺",
+    "url": "http://cnlive.cnr.cn/hls/bjwygb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "山东广播娱乐调频",
+    "category": "文艺",
+    "url": "http://cnlive.cnr.cn/hls/sdnzbdt.m3u8",
+    "isok": false
+  },
+  {
+    "title": "江苏经典流行音乐广播",
+    "category": "文艺",
+    "url": "http://lzlive.vojs.cn/2wtSfrS/92/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "FM99.6浙江民生广播",
+    "category": "文艺",
+    "url": "http://yf.m.l.cztv.com/channels/lantian/audio03/128k.m3u8",
+    "isok": true
+  },
+  {
+    "title": "湖南文艺广播",
+    "category": "文艺",
+    "url": "rtmp://39.108.163.99:1935/live/fm975",
+    "isok": false
+  },
+  {
+    "title": "沧州文艺广播",
+    "category": "文艺",
+    "url": "http://vod.czgd.tv:1935/guangbo/gb03/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "郑州文娱广播",
+    "category": "文艺",
+    "url": "http://living.muzhifm.com/muzhifm/zhenzhou2_fm918.m3u8?auth_key=1649670265-0-0-26716c3d74874b418f20b6ea257dc137",
+    "isok": true
+  },
+  {
+    "title": "新疆维语文艺广播",
+    "category": "文艺",
+    "url": "http://satellitepull.cnr.cn/live/wxxjwyjtwygb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "沈阳文艺广播",
+    "category": "文艺",
+    "url": "http://lms.csytv.com/Live/120/live/livestream.m3u8",
+    "isok": true
+  },
+  {
+    "title": "辽宁文艺广播（FM95.9）",
+    "category": "文艺",
+    "url": "http://satellitepull.cnr.cn/live/wxlnwygb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "湖州都市文艺频率",
+    "category": "文艺",
+    "url": "http://live.hzitv.cn/tslslive/kOWioaF/hls/live_sd.m3u8",
+    "isok": true
+  },
+  {
+    "title": "海南文艺广播",
+    "category": "文艺",
+    "url": "http://satellitepull.cnr.cn/live/wxhainyygb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "河北文艺广播",
+    "category": "文艺",
+    "url": "rtmp://mms.hebradio.com/live/24",
+    "isok": false
+  },
+  {
+    "title": "运城交通文艺广播",
+    "category": "文艺",
+    "url": "http://ych-hls.tidemedia.com/qedLeTz/800/live.m3u8",
+    "isok": false
+  },
+  {
+    "title": "舟山文艺教育广播",
+    "category": "文艺",
+    "url": "http://live.wifizs.cn/fm91/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "唐山交通文艺广播",
+    "category": "文艺",
+    "url": "http://live1.tsr.he.cn:1936/live/tsfm1/128k/tzwj_video.m3u8",
+    "isok": true
+  },
+  {
+    "title": "FM90.0四川文艺广播",
+    "category": "文艺",
+    "url": "http://satellitepull.cnr.cn/live/wxscwygb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "松原交通文艺广播",
+    "category": "文艺",
+    "url": "http://tv.jlsy.tv:1935/SHOUTcast/100/playlist.m3u8",
+    "isok": false
+  },
+  {
+    "title": "临沂经济文艺广播",
+    "category": "文艺",
+    "url": "http://live.ilinyi.net/channels/tvie/dushizhisheng/flv:128k/live",
+    "isok": true
+  },
+  {
+    "title": "威海交通文艺广播",
+    "category": "文艺",
+    "url": "http://l1.weihai.tv:8081/hls/RL9bbRfu7y.m3u8",
+    "isok": false
+  },
+  {
+    "title": "呼伦贝尔交通文艺广播",
+    "category": "文艺",
+    "url": "http://live1.hrtonline.cn:1935/live/live109/64K/tzwj_video.m3u8",
+    "isok": true
+  },
+  {
+    "title": "重庆文艺广播",
+    "category": "文艺",
+    "url": "http://satellitepull.cnr.cn/live/wxcqwygb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "宿州文艺广播",
+    "category": "文艺",
+    "url": "http://36.34.121.90:8800/tslslive/tTSEWtZ/hls/live_sd.m3u8",
+    "isok": false
+  },
+  {
+    "title": "怀化交通文艺广播",
+    "category": "文艺",
+    "url": "rtmp://116.62.19.154:1935/live/huaihuagb2",
+    "isok": false
+  },
+  {
+    "title": "天津滨海文艺广播",
+    "category": "文艺",
+    "url": "http://60.30.52.41/live/FM101.7/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "佳木斯交通文艺广播",
+    "category": "文艺",
+    "url": "http://hljjms.chinashadt.com:2036/live/1006.stream/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "中央台都市之声",
+    "category": "都市",
+    "url": "http://rtmpcnr004.cnr.cn/live/dszs/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "北京城市服务管理广播",
+    "category": "都市",
+    "url": "http://cnlive.cnr.cn/hls/bjcsgb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "东方都市广播",
+    "category": "都市",
+    "url": "http://satellitepull.cnr.cn/live/wx32dfgbdt/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "重庆都市广播",
+    "category": "都市",
+    "url": "http://satellitepull.cnr.cn/live/wxcqdsgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "广东城市之声",
+    "category": "都市",
+    "url": "http://satellitepull.cnr.cn/live/wxgdcszs/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "浙江城市之声",
+    "category": "都市",
+    "url": "rtmp://tideweblive.jmtv.cn/tslsChannelLive/141Ldor/live",
+    "isok": false
+  },
+  {
+    "title": "宜昌经济生活广播",
+    "category": "都市",
+    "url": "rtmp://zb.3xgd.com:1935/FM/qct",
+    "isok": false
+  },
+  {
+    "title": "泉州都市之声",
+    "category": "都市",
+    "url": "http://live.qztvxwgj.com/live/fm923.m3u8",
+    "isok": true
+  },
+  {
+    "title": "江西都市广播",
+    "category": "都市",
+    "url": "rtmp://111.75.206.134/live/dsgb",
+    "isok": false
+  },
+  {
+    "title": "南京城市调频",
+    "category": "都市",
+    "url": "http://hls.njgb.com/live_hls/1/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "河南城市之声",
+    "category": "都市",
+    "url": "http://stream.hndt.com/live/jiaoyu/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "郑州女性时空广播",
+    "category": "都市",
+    "url": "http://cnlive.cnr.cn/hls/zznxskgb.m3u8",
+    "isok": false
+  },
+  {
+    "title": "黑龙江都市女性广播",
+    "category": "都市",
+    "url": "http://satellitepull.cnr.cn/live/wx32hljnxgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "四川城市之音",
+    "category": "都市",
+    "url": "http://satellitepull.cnr.cn/live/wxsccszs/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "四川旅游生活广播",
+    "category": "都市",
+    "url": "http://satellitepull.cnr.cn/live/wxsclyshgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "新疆城市广播",
+    "category": "都市",
+    "url": "http://satellitepull.cnr.cn/live/wxxjsjcgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "宁夏都市广播",
+    "category": "都市",
+    "url": "http://cnlive.cnr.cn/hls/nxdsgb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "贵州都市广播",
+    "category": "都市",
+    "url": "rtmp://hls1.gzstv.com/livegztv/dushi",
+    "isok": false
+  },
+  {
+    "title": "沈阳都市广播",
+    "category": "都市",
+    "url": "http://lms.csytv.com/Live/120/live/livestream.m3u8",
+    "isok": true
+  },
+  {
+    "title": "保定城市服务广播",
+    "category": "都市",
+    "url": "http://cnlive.cnr.cn/hls/bdcsfwgb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "南京城市管理广播",
+    "category": "都市",
+    "url": "http://hls.njgb.com/live_hls/5/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "呼伦贝尔104.6城市广播",
+    "category": "都市",
+    "url": "http://live1.hrtonline.cn:1935/live/live109/64K/tzwj_video.m3u8",
+    "isok": true
+  },
+  {
+    "title": "西昌人民广播电台",
+    "category": "都市",
+    "url": "http://stream.xctv.news:8084/live/3d6ca42a7c75461a9b53717ed417c760?fmt",
+    "isok": false
+  },
+  {
+    "title": "临沂都市之声广播",
+    "category": "都市",
+    "url": "http://live.ilinyi.net/channels/tvie/dushizhisheng/flv:128k/live",
+    "isok": true
+  },
+  {
+    "title": "镇江广播城市905电台",
+    "category": "都市",
+    "url": "http://live.zjmc.tv/7/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "邯郸城市服务广播",
+    "category": "都市",
+    "url": "rtmp://mms.hdbs.cn:1937/live/dyjzb",
+    "isok": false
+  },
+  {
+    "title": "湖南金鹰955电台",
+    "category": "都市",
+    "url": "rtmp://39.108.163.99:1935/live/fm955",
+    "isok": false
+  },
+  {
+    "title": "洛阳城市广播",
+    "category": "都市",
+    "url": "http://live1.lytv.com.cn:1935/live/FM1065/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "周口都市广播",
+    "category": "都市",
+    "url": "rtmp://tv.zkxww.com:1935/broadcast/1002.stream_aac",
+    "isok": false
+  },
+  {
+    "title": "东阳城市广播",
+    "category": "都市",
+    "url": "http://stream.dybtv.com/csgb/sd/live.m3u8",
+    "isok": true
+  },
+  {
+    "title": "中央台华夏之声",
+    "category": "娱乐",
+    "url": "http://rtmpcnr007.cnr.cn/live/hxzs/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "北京欢乐时光广播",
+    "category": "娱乐",
+    "url": "http://cnlive.cnr.cn/hls/bjhlsggb.m3u8",
+    "isok": true
+  },
+  {
+    "title": "山东数字休闲音乐广播",
+    "category": "娱乐",
+    "url": "http://cnlive.cnr.cn/hls/sdswgb.m3u8",
+    "isok": false
+  },
+  {
+    "title": "泉州刺桐之声",
+    "category": "娱乐",
+    "url": "http://live.qztvxwgj.com/live/fm1059.m3u8",
+    "isok": true
+  },
+  {
+    "title": "成都文化休闲广播",
+    "category": "娱乐",
+    "url": "http://livecdn.cdbs.com.cn/fm946.flv/playlist.m3u8",
+    "isok": false
+  },
+  {
+    "title": "南昌城市娱乐调频Happy100.7",
+    "category": "娱乐",
+    "url": "http://liveplay.nctv.net.cn/lj3NRe2/48/o1mhjgN.m3u8",
+    "isok": false
+  },
+  {
+    "title": "中央台娱乐广播",
+    "category": "娱乐",
+    "url": "http://rtmpcnr014.cnr.cn/live/ylgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "唐山文化娱乐广播",
+    "category": "娱乐",
+    "url": "http://live1.tsr.he.cn:1936/live/tsfm4/128k/tzwj_video.m3u8",
+    "isok": true
+  },
+  {
+    "title": "中央台相声小品广播",
+    "category": "娱乐",
+    "url": "http://rtmpcnr023.cnr.cn/live/xsxp/playlist.m3u8",
+    "isok": false
+  },
+  {
+    "title": "浦东广播电台新娱乐频率",
+    "category": "娱乐",
+    "url": "http://pdlive.lyuncloud.com/pdaudio/fm1001/index.m3u8",
+    "isok": true
+  },
+  {
+    "title": "成都飞跃调频",
+    "category": "网络",
+    "url": "http://livecdn.cdbs.com.cn/fmok.flv/playlist.m3u8",
+    "isok": false
+  },
+  {
+    "title": "中国国际广播电台华盛顿广播",
+    "category": "网络",
+    "url": "http://sk.cri.cn/am846.m3u8",
+    "isok": true
+  },
+  {
+    "title": "中国国际广播电台伦敦广播",
+    "category": "网络",
+    "url": "http://sk.cri.cn/am846.m3u8",
+    "isok": true
+  },
+  {
+    "title": "黑龙江高校广播网（龙广高校台）",
+    "category": "网络",
+    "url": "http://satellitepull.cnr.cn/live/wx32hljgxgb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "中央台维语广播",
+    "category": "网络",
+    "url": "http://rtmpcnr013.cnr.cn/live/wygb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "中央台哈语广播",
+    "category": "网络",
+    "url": "http://rtmpcnr025.cnr.cn/live/hygb/playlist.m3u8",
+    "isok": true
+  },
+  {
+    "title": "中国国际广播电台海峡飞虹",
+    "category": "网络",
+    "url": "http://sk.cri.cn/hxfh.m3u8",
+    "isok": true
+  }
+]

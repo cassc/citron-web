@@ -1,0 +1,9 @@
+.breadcrumb{
+  display:flex;
+  flex-direction: flex-start;
+  & > * {
+    &:not(:first-child){
+      margin-left: .5rem;
+    }
+  }
+}

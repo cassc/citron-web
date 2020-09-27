@@ -1,0 +1,194 @@
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes scaleFromCenter {
+  0% {
+    transform: translate(-50%, -50%)  scale(0); 
+  }
+
+  
+
+  100% {
+    transform: translate(-50%, -50%) scale(1); 
+  }
+}
+
+
+
+@keyframes scaleToCenter {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%)  scale(1); 
+  }
+  
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0); 
+  }
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes toVisible{
+  0%{
+    opacity: 0;
+  }
+
+  100%{
+    opacity: 1;
+  }
+}
+
+@keyframes colorChange{
+  0%{
+    color: var(--color-primary);
+  }
+
+  50%{
+    color: $color-light-gray;
+  }
+  
+  100%{
+    color: var(--color-primary);
+  }
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -50%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate, .animate-s, .animate-f{
+  
+  transition-timing-function: ease-out;
+  animation-fill-mode: backwards;
+
+  &--fadein {
+    animation-name: fadeIn;
+  }
+
+  &--fadeinup {
+    animation-name: fadeInUp;
+  }
+
+  &--fadeindown {
+    animation-name: fadeInDown;
+  }
+
+  &--fadeinright { 
+    animation-name: fadeInRight;
+  }
+}
+
+.animate{
+  animation-duration: 0.25s;
+}
+
+.animate-s{
+  animation-duration: 0.35s;
+}
+
+.animate-f{
+  animation-duration: 0.15s;
+}
+
+@keyframes anim-rotate {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+

@@ -1,0 +1,36 @@
+.box{
+  margin-bottom: 1rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--color-tertiary-light);
+  border-image: initial;
+  border-radius: 3px;
+  overflow-x: hidden;
+  
+  &-content{
+    padding: .5rem 1rem 1rem;
+  }
+
+  &-title{
+    font-weight: bold;
+    font-size: 1rem;
+    padding: .4rem .5rem .5rem;
+    &--oneline{
+      display:flex;
+      justify-content: space-between;
+    }
+    &--gray{
+      background-color: var(--color-primary-light);
+    }
+  }
+  &-row{
+    display:flex;
+    justify-content: space-between;
+  }
+
+  &__error{
+    color: $color-red;
+  }
+}
+
+

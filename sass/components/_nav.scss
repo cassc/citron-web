@@ -1,0 +1,16 @@
+.rule-nav{
+  font-weight:bold;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $color-light-gray;
+  padding-bottom: .4rem;
+  &__right{
+    display:flex;
+    & > * {
+      &:not(:last-child){
+        margin-right: 1rem;
+      }
+    }
+  }
+}
