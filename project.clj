@@ -15,6 +15,7 @@
                  [reagent "0.8.1"]
                  [reagent-utils "0.3.1" :exclusions [[reagent]]]
                  [nilenso/wscljs "0.2.0"]
+                 [com.andrewmcveigh/cljs-time "0.5.2"]
                  [com.taoensso/timbre "4.10.0"]]
   :infer-externs true
   

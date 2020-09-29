@@ -4,6 +4,7 @@
    [citron.views.home :refer [index-page]]
    [citron.http :as http]
    [citron.db :as db]
+   [citron.utils :as utils]
    
    [ajax.core :refer [PUT GET DELETE json-response-format json-request-format]]
    [secretary.core :as secretary :refer-macros [defroute]]
@@ -71,10 +72,19 @@
     (<! (timeout 5000))
     (recur)))
 
+(defn start-time-udpater []
+  (go-loop []
+    (let [now (utils/long->complex-string)]
+      (when-not (= now (:now-as-string @db/timed-store))
+        (db/update-timed-store :now-as-string now)))
+    (<! (timeout 499))
+    (recur)))
+
 (defonce init!
   (delay
     (disable-context-menu!)
     (start-msg-loader)
+    (start-time-udpater)
     (hook-browser-navigation!)))
 
 (enable-console-print!)

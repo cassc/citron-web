@@ -19,4 +19,14 @@
 ;; current file/dir state
 (defonce file-store (atom nil))
 
+;; message board 
 (defonce msg-store (atom ""))
+
+;; data updated periodically
+(defonce timed-store (atom {}))
+
+(defn clear-error []
+  (swap! app-state dissoc :error))
+
+(defn update-timed-store [ky vl]
+  (swap! timed-store assoc ky vl))

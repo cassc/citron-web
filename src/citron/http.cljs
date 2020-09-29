@@ -36,21 +36,6 @@
          :keywords? true
          :error-handler (http-error-handler "/file")})))
 
-(defn login [cred]
-  (swap! db/app-state dissoc :error)
-  (POST "/pub/login"
-        {:params cred
-         :format :json
-         :handler (fn [{:keys [code data msg]}]
-                    (if (zero? code)
-                      (do
-                        (swap! db/app-state assoc :user data)
-                        (get-file))
-                      (swap! db/app-state assoc :error msg)))
-         :response-format :json
-         :keywords? true
-         :error-handler (http-error-handler "/pub/login")}))
-
 (defn upload-file [{:keys [file parent]} on-success]
   (PUT "/file" 
        {:body (doto (js/FormData.)
@@ -100,3 +85,19 @@
                      (reset! db/msg-store data)
                      (swap! db/app-state assoc :error msg)))
         :error-handler (http-error-handler "/msg")}))
+
+(defn login [cred]
+  (swap! db/app-state dissoc :error)
+  (POST "/pub/login"
+        {:params cred
+         :format :json
+         :handler (fn [{:keys [code data msg]}]
+                    (if (zero? code)
+                      (do
+                        (swap! db/app-state assoc :user data)
+                        (get-msg-board)
+                        (get-file))
+                      (swap! db/app-state assoc :error msg)))
+         :response-format :json
+         :keywords? true
+         :error-handler (http-error-handler "/pub/login")}))
