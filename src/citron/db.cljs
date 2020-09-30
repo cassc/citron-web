@@ -8,7 +8,7 @@
    [clojure.string :as s]))
 
 ;; global app state
-(defonce app-state (atom {}))
+(defonce app-state (atom {:file-offset 0}))
 
 ;; login cred state
 (defonce login-store (atom {}))
@@ -30,3 +30,4 @@
 
 (defn update-timed-store [ky vl]
   (swap! timed-store assoc ky vl))
+

@@ -10,6 +10,8 @@
 
 (def app-title "Citron File Manager")
 
+(def page-size 50)
+
 (defn parent [path]
   (s/join "/" (butlast (s/split path #"/"))))
 
@@ -20,8 +22,11 @@
   (fn [e]
     (swap! db/login-store assoc key (-> e .-target .-value))))
 
-(defn to-display-path [path]
-  (s/replace (or path "") #"^\./" ""))
+(defn to-display-path
+  ([parent path]
+   (subs path (inc (count parent))))
+  ([path]
+   (s/replace (or path "") #"^\./" "")))
 
 (defn login []
   (when-not (some s/blank? (vals @db/login-store))
@@ -35,15 +40,24 @@
 
 (defn edit-msg-board []
   (let [{:keys [edit-msg-board]} (swap! db/app-state update :edit-msg-board not)]
-    (when-not edit-msg-board
+    (if edit-msg-board
+      (swap! db/app-state assoc :hide-msg-content nil)
       (http/put-msg-board @db/msg-store))))
+
+(defn- toggle-hidden-msg-content []
+  (when-not (:edit-msg-board @db/app-state)
+    (swap! db/app-state update :hide-msg-content not)))
 
 (defn- msg-panel []
   (fn []
     [:div.mboard
      [:div.mboard__btn
       [:div.mboard__title
-       [:span [:i.mdi-message-reply-text.mdi] " Message board"]
+       [:span.mboard__title-title {:on-click toggle-hidden-msg-content}
+        (if (:hide-msg-content @db/app-state)
+          [:i.mdi-message-bulleted-off.mdi]
+          [:i.mdi-message-reply-text.mdi])
+        " Message board"]
        [:input.btn.mboard__btn-edit
         {:class (if (:edit-msg-board @db/app-state)
                   "mboard__btn-edit--editing"
@@ -55,20 +69,40 @@
          :on-click edit-msg-board}]]]
      (if (:edit-msg-board @db/app-state)
        [:textarea {:value @db/msg-store :on-change (fn [e] (reset! db/msg-store (-> e .-target .-value)))}]
-       [:pre.mboard__content @db/msg-store])]))
+       (when-not (:hide-msg-content @db/app-state)
+         [:pre.mboard__content @db/msg-store]))]))
 
 (defn make-static-path [path]
   (str "/static/file?path=" path))
 
+(defn- filelist [path files]
+  [:div.file__files
+   (let [parent path]
+     (doall
+      (for [{:keys [isdir path mime size] :as f} files]
+        [:div.file__filewrapper {:key path :on-click #(goto-file f)}
+         [:div.file__filedetails
+          [:i.file__fileicon.mdi
+           {:class (let [mime (or mime "")]
+                     (cond 
+                       isdir "mdi-folder"
+                       (s/includes? mime "image") "mdi-image"
+                       (s/includes? mime "text") "mdi-file-document"
+                       :else "mdi-format-page-break"))}]
+          [:div.file__filename (to-display-path parent path)]]
+         [:div.file__filemeta
+          [:div]
+          [:div (utils/readable-filesize size)]]])))])
+
 (defn- file-panel []
   (fn []
-    (let [{:keys [path files isdir content mime] :as f} @db/file-store]
+    (let [{:keys [more path files isdir content mime] :as f} @db/file-store]
       [:div.file
        [:div.file__title
         [:span.file__title--home {:on-click #(goto-file {:path "."})}
          [:i.mdi-home.mdi]]
-        [:span (str (when-not (= "." path)
-                      (to-display-path path)))]]
+        [:span.file__title-path (str (when-not (= "." path)
+                                       (to-display-path path)))]]
        [:div.file__btns
         (when-not (top? path)
           [:a.btn {:href "javascript:;"
@@ -101,20 +135,14 @@
                                (fn []
                                  (http/get-file path))))))}]])]
        (when content
-         [:div
+         [:div.file__content
           [:pre content]])
        (when (s/includes? (or mime "") "image")
-         [:div
+         [:div.file__imgpreview
           [:img {:src (make-static-path path)}]])
-       [:div.file__files
-        (doall
-         (for [{:keys [isdir path mime] :as f} files]
-           [:div {:key path :on-click #(goto-file f)}
-            [:span (str (to-display-path path)
-                        (when (and isdir (not (s/ends-with? path "/")))
-                          "/"))]
-            "----------"
-            [:span (if isdir "Directory" (or mime ""))]]))]])))
+       [filelist path files]
+       (when more
+         [:div.file__morebtn [:a.btn {:href "javascript:;"} "More"]])])))
 
 (defn- user-page []
   (fn []

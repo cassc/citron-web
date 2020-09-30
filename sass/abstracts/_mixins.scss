@@ -106,3 +106,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
 @mixin monoFont(){
   font-family: Consolas, Monospace, Moncaco;
 }
+
+@mixin breakLine(){
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-break: anywhere;
+}

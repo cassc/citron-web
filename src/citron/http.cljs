@@ -25,9 +25,11 @@
   ([]
    (get-file "."))
   ([path]
+   (get-file path 0))
+  ([path offset]
    (swap! db/app-state dissoc :error)
    (GET "/file"
-        {:params {:path path}
+        {:params {:path path :offset offset}
          :handler (fn [{:keys [code data msg]}]
                     (if (zero? code)
                       (reset! db/file-store data)
