@@ -21,7 +21,7 @@
   
   :aliases {"fig"       ["trampoline" "run" "-m" "figwheel.main"]
             "fig:build" ["trampoline" "run" "-m" "figwheel.main" "-b" "dev" "-r"]
-            "fig:min"   ["run" "-m" "figwheel.main" "-O" "none" "-bo" "prod"]
+            "fig:min"   ["run" "-m" "figwheel.main" "-O" "advanced" "-bo" "prod"]
             
             }
 
