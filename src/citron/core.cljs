@@ -83,6 +83,8 @@
 (defonce init!
   (delay
     (disable-context-menu!)
+    (when (:user @db/app-state)
+      (http/get-file))
     (start-msg-loader)
     (start-time-udpater)
     (hook-browser-navigation!)))

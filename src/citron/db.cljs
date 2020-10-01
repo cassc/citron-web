@@ -8,7 +8,7 @@
    [clojure.string :as s]))
 
 ;; global app state
-(defonce app-state (atom {:file-offset 0}))
+(defonce app-state (local-storage (atom {:file-offset 0}) :app-state))
 
 ;; login cred state
 (defonce login-store (atom {}))
@@ -20,7 +20,7 @@
 (defonce file-store (atom nil))
 
 ;; message board 
-(defonce msg-store (atom ""))
+(defonce msg-store (local-storage (atom "") :msg-store))
 
 ;; data updated periodically
 (defonce timed-store (atom {}))

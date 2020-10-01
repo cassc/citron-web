@@ -2,7 +2,9 @@
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require
    [citron.db :as db]
-
+   [citron.utils :as utils]
+   
+   [clojure.core.async :as a :refer [chan]]
    [ajax.core :refer [PUT POST GET DELETE json-response-format json-request-format]]
    [secretary.core :as secretary :refer-macros [defroute]]
    [alandipert.storage-atom :refer [local-storage]]
@@ -20,6 +22,13 @@
         (swap! db/app-state assoc :error (str "Error: " err))))))
 
 
+(defn set-done! [ch]
+  (fn []
+    (a/put! ch ::done)))
+
+(defn- merge-filelist [{:keys [files]} f2]
+  (assoc f2 :files (concat files (:files f2))))
+
 (defn get-file
   "Get file info for the provided path"
   ([]
@@ -27,15 +36,18 @@
   ([path]
    (get-file path 0))
   ([path offset]
-   (swap! db/app-state dissoc :error)
+   (swap! db/app-state assoc :page-loading true :error nil)
    (GET "/file"
         {:params {:path path :offset offset}
          :handler (fn [{:keys [code data msg]}]
                     (if (zero? code)
-                      (reset! db/file-store data)
+                      (if (zero? offset)
+                        (reset! db/file-store data)
+                        (swap! db/file-store merge-filelist data))
                       (swap! db/app-state assoc :error msg)))
          :response-format :json
          :keywords? true
+         :finally #(swap! db/app-state dissoc :page-loading :rename-file?)
          :error-handler (http-error-handler "/file")})))
 
 (defn upload-file [{:keys [file parent]} on-success]
@@ -64,6 +76,19 @@
                         (on-success)
                         (swap! db/app-state assoc :error msg)))
            :error-handler (http-error-handler "/file")}))
+
+(defn rename-file [path filename]
+  (POST "/rename" 
+       {:params {:path path :filename filename}
+        :format :json
+        :response-format :json
+        :keywords? true
+        :timeout 60000
+        :handler (fn [{:keys [code msg]}]
+                   (if (zero? code)
+                     (get-file (s/replace path (utils/to-filename path) filename))
+                     (swap! db/app-state assoc :error msg)))
+        :error-handler (http-error-handler "/rename")}))
 
 (defn put-msg-board [msg]
   (PUT "/msg" 

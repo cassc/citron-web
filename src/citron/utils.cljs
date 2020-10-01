@@ -2,7 +2,8 @@
   (:require
    [cljs-time.coerce :refer [from-long to-local-date-time]]
    [cljs-time.core :refer [today to-default-time-zone]]
-   [cljs-time.format :refer [unparse-local formatters formatter unparse]]))
+   [cljs-time.format :refer [unparse-local formatters formatter unparse]]
+   [clojure.string :as s]))
 
 (defn set-hash! [loc]
   (set! (.-hash js/window.location) loc))
@@ -55,3 +56,6 @@
               (nth size-units i) "B")
          (recur (/ size 1024.0) (inc i)))
        "Huge file"))))
+
+(defn to-filename [path]
+  (last (s/split path #"/")))

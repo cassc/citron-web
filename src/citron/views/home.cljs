@@ -3,14 +3,12 @@
    [citron.db :as db]
    [citron.http :as http]
    [citron.utils :as utils]
-
-   [alandipert.storage-atom :refer [local-storage]]
    [clojure.string :as s]
    [taoensso.timbre :as t]))
 
 (def app-title "Citron File Manager")
 
-(def page-size 50)
+(def page-size 100)
 
 (defn parent [path]
   (s/join "/" (butlast (s/split path #"/"))))
@@ -21,6 +19,10 @@
 (defn set-login-value [key]
   (fn [e]
     (swap! db/login-store assoc key (-> e .-target .-value))))
+
+(defn set-app-state-value [key]
+  (fn [e]
+    (swap! db/app-state assoc key (-> e .-target .-value))))
 
 (defn to-display-path
   ([parent path]
@@ -47,6 +49,15 @@
 (defn- toggle-hidden-msg-content []
   (when-not (:edit-msg-board @db/app-state)
     (swap! db/app-state update :hide-msg-content not)))
+
+(defn- toggle-rename-file [filename]
+  (fn [_]
+    (let [{:keys [rename-file?]} (swap! db/app-state update :rename-file? not)]
+      (swap! db/app-state assoc :filename (when rename-file? filename)))))
+
+(defn- save-filename [path]
+  (fn [_]
+    (http/rename-file path (:filename @db/app-state))))
 
 (defn- msg-panel []
   (fn []
@@ -96,7 +107,7 @@
 
 (defn- file-panel []
   (fn []
-    (let [{:keys [more path files isdir content mime] :as f} @db/file-store]
+    (let [{:keys [more path files isdir content mime offset total] :as f} @db/file-store]
       [:div.file
        [:div.file__title
         [:span.file__title--home {:on-click #(goto-file {:path "."})}
@@ -104,20 +115,24 @@
         [:span.file__title-path (str (when-not (= "." path)
                                        (to-display-path path)))]]
        [:div.file__btns
-        (when-not (top? path)
+        (when-not (or (:rename-file? @db/app-state) (top? path))
           [:a.btn {:href "javascript:;"
                    :on-click #(goto-parent f)}
            [:i {:class "mdi mdi-arrow-up"}]
-           "Back"])
-        (when-not (and isdir (pos? (count files)))
+           "Up"])
+        (when-not (or (:rename-file? @db/app-state) (and isdir (pos? (count files))))
           [:a.btn {:href "javascript:;"
                    :on-click #(http/delete-file f (fn [] (goto-parent f)))}
            [:i {:class "mdi mdi-delete-circle"}]
            "Delete"])
-        (when-not isdir
+        (when-not (or (:rename-file? @db/app-state) isdir)
+          [:a.btn {:href "javascript:;" :on-click (toggle-rename-file (utils/to-filename path))}
+           [:i {:class "mdi mdi-rename-box"}]
+           "Rename"])
+        (when-not (or (:rename-file? @db/app-state) isdir)
           [:a.btn {:href (make-static-path path) :target "_blank"}
            [:i {:class "mdi mdi-eye"}]
-           "Open"])
+           "Download"])
         (when isdir
           [:div
            [:label.btn {:for "fileuploader"}
@@ -134,6 +149,18 @@
                                (assoc @db/tmp-file-store :file file :parent path)
                                (fn []
                                  (http/get-file path))))))}]])]
+       (when (:rename-file? @db/app-state)
+         [:div
+          [:div.bold "Rename file"]
+          [:div.file__renametitle
+           [:div (utils/to-filename path)]
+           [:i.mdi.mdi-arrow-right]
+           [:input
+            {:type :text
+             :value (:filename @db/app-state)
+             :on-change (set-app-state-value :filename)}]
+           [:a.btn {:href "javascript:;" :on-click (save-filename path)} "Save"]
+           [:a.btn {:href "javascript:;" :on-click (toggle-rename-file (utils/to-filename path))} "Cancel"]]])
        (when content
          [:div.file__content
           [:pre content]])
@@ -142,15 +169,21 @@
           [:img {:src (make-static-path path)}]])
        [filelist path files]
        (when more
-         [:div.file__morebtn [:a.btn {:href "javascript:;"} "More"]])])))
+         [:div.file__morebtn
+          [:span (str (- total offset page-size) " more items left. ")
+           [:a.btn {:href "javascript:;" :on-click #(http/get-file path (+ offset page-size))}
+            "Load"]]])])))
 
 (defn- user-page []
   (fn []
     [:div.user
-     [:div.user__title
+     [:div.user__title.user__title--pc
       [:div.user__title-left (:now-as-string @db/timed-store)]
       [:div.user__title-center app-title]
       [:div.user__title-right]]
+     [:div.user__title.user__title--phone
+      [:div.user__title-center app-title]
+      [:div.user__title-right (:now-as-string @db/timed-store)]]
      [:div.user__panel
       [msg-panel]
       [file-panel]]]))
@@ -164,7 +197,7 @@
       [:div.login__fields
        [:input {:auto-complete "off" :type :text :value (:username @db/login-store) :placeholder "Username" :on-change (set-login-value :username)}]
        [:input {:type :password :placeholder "Password" :value (:password @db/login-store) :on-change (set-login-value :password)}]]
-      [:input {:type :button :on-click login :value "Login"}]]]))
+      [:input.btn {:type :button :on-click login :value "Login"}]]]))
 
 (defn index-page []
   (fn []
@@ -173,4 +206,8 @@
        [:div.error {:on-click db/clear-error} err])
      (if (:user @db/app-state)
        [user-page]
-       [login-page])]))
+       [login-page])
+     (when (:page-loading @db/app-state)
+       [:div.popup.popup--open
+        [:div.pagespinner
+         [:div.lds-dual-ring]]])]))
