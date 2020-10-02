@@ -53,6 +53,10 @@
        (secretary/dispatch! (.-token event))))
     (.setEnabled true)))
 
+;; https://lfn3.net/2019/01/07/re-frame-and-the-back-button/
+(defn handle-pop-state [_]
+  (t/info "pop state ignored")
+  (js/alert "You are about to exit this page")) 
 
 (defn disable-context-menu! []
   (set! (.-oncontextmenu js/window)
@@ -80,6 +84,14 @@
     (<! (timeout 499))
     (recur)))
 
+(defn disable-pop-state! []
+  ;; (set! (.-onpopstate js/window) handle-pop-state)
+  (.pushState js/history nil nil (.-URL js/document))
+  (.addEventListener js/window
+                     "popstate"
+                     (fn []
+                       (.pushState js/history nil nil (.-URL js/document)))))
+
 (defonce init!
   (delay
     (disable-context-menu!)
@@ -87,6 +99,7 @@
       (http/get-file))
     (start-msg-loader)
     (start-time-udpater)
+    (disable-pop-state!)
     (hook-browser-navigation!)))
 
 (enable-console-print!)

@@ -6,10 +6,6 @@
    
    [clojure.core.async :as a :refer [chan]]
    [ajax.core :refer [PUT POST GET DELETE json-response-format json-request-format]]
-   [secretary.core :as secretary :refer-macros [defroute]]
-   [alandipert.storage-atom :refer [local-storage]]
-   [reagent.core :as r :refer [atom]]
-   [reagent.session :as session]
    [clojure.string :as s]
    [taoensso.timbre :as t]))
 

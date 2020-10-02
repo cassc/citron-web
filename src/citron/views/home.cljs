@@ -101,6 +101,8 @@
                        (s/includes? mime "text") "mdi-file-document"
                        :else "mdi-format-page-break"))}]
           [:div.file__filename (to-display-path parent path)]]
+         (when (s/includes? (or mime "") "image")
+           [:div.file__imgthumbnail [:img {:src (make-static-path path)}]])
          [:div.file__filemeta
           [:div]
           [:div (utils/readable-filesize size)]]])))])
@@ -149,6 +151,11 @@
                                (assoc @db/tmp-file-store :file file :parent path)
                                (fn []
                                  (http/get-file path))))))}]])]
+       (when isdir
+         [:div "File filter"]
+         [:div "image only"]
+         [:div "video only"]
+         [:div "text only"])
        (when (:rename-file? @db/app-state)
          [:div
           [:div.bold "Rename file"]
@@ -228,7 +235,7 @@
      (if (:user @db/app-state)
        [user-page]
        [login-page])
-     (when (:page-loading @db/app-state)
+     (when (:page-loading @db/app-state) 
        [:div.popup.popup--open
         [:div.pagespinner
          [:div.lds-dual-ring]]])]))
