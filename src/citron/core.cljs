@@ -69,7 +69,7 @@
   (go-loop []
     (try
       (when (and (:user @db/app-state)
-                 (not (:edit-msg-board @db/app-state)))
+                 (not (:new-msg @db/app-state)))
         (http/get-msg-board))
       (catch :default e
         (t/error "msg-loader error" e)))

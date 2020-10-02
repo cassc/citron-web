@@ -208,9 +208,22 @@
   }
 
   &__content{
-    padding-top: 1rem;
-    white-space: pre-wrap;
-    word-wrap: break-word;      
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid lightgrey;
+    position: relative;
+    
+    & > i{
+      cursor: pointer;
+      position: absolute;
+      font-size: 1.2rem;
+      right: 0.2rem;
+    }
+    
+    & > pre{
+      white-space: pre-wrap;
+      word-wrap: break-word;      
+    }
   }
 
   &__btn-edit{
@@ -351,6 +364,7 @@
     justify-content: flex-start;
     align-items: center;
     font-family: monospace;
+    margin-bottom: 1rem;
     & > * {
       margin-right: 1rem;
     }
@@ -376,8 +390,13 @@
     }
   }
 
+  &__renametitlebtn--active{
+    animation: glow 1.0s infinite alternate;  
+    transition: border 1.0s linear, box-shadow 1.0s linear;
+  }
+
   &__mediaplayer{
-    width: 24rem;
+    width: 100%;
     @include respond(phone){
       width: 100%;
     }
@@ -413,6 +432,17 @@
       max-width: 80%;
       max-height: 4rem;
     }
+  }
+
+  &__filter--active{
+    animation: glow 1.0s infinite alternate;  
+    transition: border 1.0s linear, box-shadow 1.0s linear;
+  }
+
+  &__filter-input{
+    @include cInput;
+    margin-bottom: 1rem;
+    width: 100%;
   }
 }
 

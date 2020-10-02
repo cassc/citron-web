@@ -32,9 +32,12 @@
   ([path]
    (get-file path 0))
   ([path offset]
+   (swap! db/app-state dissoc :filter? :filter-term)
+   (get-file path offset ""))
+  ([path offset term]
    (swap! db/app-state assoc :page-loading true :error nil)
    (GET "/file"
-        {:params {:path path :offset offset}
+        {:params {:path path :offset offset :term term}
          :handler (fn [{:keys [code data msg]}]
                     (if (zero? code)
                       (if (zero? offset)
@@ -88,18 +91,6 @@
                      (swap! db/app-state assoc :error msg)))
         :error-handler (http-error-handler "/rename")}))
 
-(defn put-msg-board [msg]
-  (PUT "/msg" 
-       {:params {:msg msg}
-        :format :json
-        :response-format :json
-        :keywords? true
-        :timeout 60000
-        :handler (fn [{:keys [code msg]}]
-                   (when-not (zero? code)
-                     (swap! db/app-state assoc :error msg)))
-        :error-handler (http-error-handler "/msg")}))
-
 (defn get-msg-board []
   (GET "/msg" 
        {:response-format :json
@@ -108,6 +99,35 @@
         :handler (fn [{:keys [code data msg]}]
                    (if (zero? code)
                      (reset! db/msg-store data)
+                     (swap! db/app-state assoc :error msg)))
+        :error-handler (http-error-handler "/msg")}))
+
+(defn put-msg-board [msg]
+  (PUT "/msg" 
+       {:params {:msg msg}
+        :format :json
+        :response-format :json
+        :keywords? true
+        :timeout 60000
+        :handler (fn [{:keys [code msg]}]
+                   (if (zero? code)
+                     (do
+                       (reset! db/temp-msg-store "")
+                       (get-msg-board))
+                     (swap! db/app-state assoc :error msg)))
+        :error-handler (http-error-handler "/msg")}))
+
+
+(defn delete-msg [id]
+  (DELETE "/msg" 
+       {:params {:id id}
+        :format :json
+        :response-format :json
+        :keywords? true
+        :timeout 60000
+        :handler (fn [{:keys [code msg]}]
+                   (if (zero? code)
+                     (get-msg-board)
                      (swap! db/app-state assoc :error msg)))
         :error-handler (http-error-handler "/msg")}))
 

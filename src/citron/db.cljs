@@ -20,7 +20,10 @@
 (defonce file-store (atom nil))
 
 ;; message board 
-(defonce msg-store (local-storage (atom "") :msg-store))
+(defonce msg-store (local-storage (atom []) :msg-store))
+
+;; temp msg on edit
+(defonce temp-msg-store (local-storage (atom "") :temp-msg-store))
 
 ;; data updated periodically
 (defonce timed-store (atom {}))

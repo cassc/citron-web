@@ -20,9 +20,14 @@
   (fn [e]
     (swap! db/login-store assoc key (-> e .-target .-value))))
 
-(defn set-app-state-value [key]
-  (fn [e]
-    (swap! db/app-state assoc key (-> e .-target .-value))))
+(defn set-app-state-value
+  ([key]
+   (set-app-state-value key nil))
+  ([key on-done]
+   (fn [e]
+     (swap! db/app-state assoc key (-> e .-target .-value))
+     (when on-done
+       (on-done)))))
 
 (defn to-display-path
   ([parent path]
@@ -40,20 +45,34 @@
 (defn goto-parent [{:keys [path]}]
   (goto-file {:path (parent path)}))
 
+(defn cancel-add-msg []
+  (swap! db/app-state dissoc :hide-msg-content :new-msg)
+  (reset! db/temp-msg-store ""))
+
 (defn edit-msg-board []
-  (let [{:keys [edit-msg-board]} (swap! db/app-state update :edit-msg-board not)]
-    (if edit-msg-board
+  (let [{:keys [new-msg]} (swap! db/app-state update :new-msg not)]
+    (if new-msg
       (swap! db/app-state assoc :hide-msg-content nil)
-      (http/put-msg-board @db/msg-store))))
+      (when-not (s/blank? @db/temp-msg-store)
+        (http/put-msg-board @db/temp-msg-store)))))
+
+(defn del-msg-board []
+  (swap! db/app-state update :del-msg not))
 
 (defn- toggle-hidden-msg-content []
-  (when-not (:edit-msg-board @db/app-state)
+  (when-not (:new-msg @db/app-state)
     (swap! db/app-state update :hide-msg-content not)))
 
 (defn- toggle-rename-file [filename]
   (fn [_]
     (let [{:keys [rename-file?]} (swap! db/app-state update :rename-file? not)]
       (swap! db/app-state assoc :filename (when rename-file? filename)))))
+
+(defn- toggle-file-filter [_]
+  (let [{:keys [filter?]} (swap! db/app-state update :filter? not)]
+    (when-not filter?
+      (swap! db/app-state assoc :filter-term "")
+      (http/get-file (:path @db/file-store)))))
 
 (defn- save-filename [path]
   (fn [_]
@@ -69,19 +88,42 @@
           [:i.mdi-message-bulleted-off.mdi]
           [:i.mdi-message-reply-text.mdi])
         " Message board"]
-       [:input.btn.mboard__btn-edit
-        {:class (if (:edit-msg-board @db/app-state)
-                  "mboard__btn-edit--editing"
-                  "")
-         :type :button
-         :value (if (:edit-msg-board @db/app-state)
-                  "Save"
-                  "Edit")
-         :on-click edit-msg-board}]]]
-     (if (:edit-msg-board @db/app-state)
-       [:textarea {:value @db/msg-store :on-change (fn [e] (reset! db/msg-store (-> e .-target .-value)))}]
+       (when-not (:del-msg @db/app-state)
+         (if (:new-msg @db/app-state)
+           (when-not (s/blank? @db/temp-msg-store)
+             [:input.btn.mboard__btn-edit
+              {:class "mboard__btn-edit--editing"
+               :type :button
+               :value "Save"
+               :on-click edit-msg-board}])
+           [:input.btn.mboard__btn-edit
+            {:type :button
+             :value "Add"
+             :on-click edit-msg-board}]))
+       (when (:new-msg @db/app-state)
+         [:input.btn.mboard__btn-edit
+          {:type :button
+           :value "Cancel"
+           :on-click cancel-add-msg}])
+       (when-not (:new-msg @db/app-state)
+         [:input.btn.mboard__btn-edit
+          {:class (if (:del-msg @db/app-state)
+                    "mboard__btn-edit--editing"
+                    "")
+           :type :button
+           :value (if (:del-msg @db/app-state)
+                    "Ok"
+                    "Delete")
+           :on-click del-msg-board}])]]
+     (if (:new-msg @db/app-state)
+       [:textarea {:value @db/temp-msg-store :on-change (fn [e] (reset! db/temp-msg-store (-> e .-target .-value)))}]
        (when-not (:hide-msg-content @db/app-state)
-         [:pre.mboard__content @db/msg-store]))]))
+         (doall
+          (for [{:keys [id msg]} @db/msg-store]
+            [:div.mboard__content {:key id}
+             (when (:del-msg @db/app-state)
+               [:i.mdi.mdi-delete-forever {:on-click #(http/delete-msg id)}])
+             [:pre msg]]))))]))
 
 (defn make-static-path [path]
   (str "/staticfile/" path))
@@ -150,12 +192,26 @@
                               (http/upload-file
                                (assoc @db/tmp-file-store :file file :parent path)
                                (fn []
-                                 (http/get-file path))))))}]])]
-       (when isdir
-         [:div "File filter"]
-         [:div "image only"]
-         [:div "video only"]
-         [:div "text only"])
+                                 (http/get-file path))))))}]])
+        (when isdir
+          [:a.btn {:href "javascript:;" :on-click toggle-file-filter
+                   :class (when (:filter? @db/app-state)
+                            "file__filter--active")}
+           [:i.mdi.mdi-filter-outline]
+           "Filter"])]
+       (when (and isdir (:filter? @db/app-state))
+         [:div
+          [:input.file__filter-input {:type :text :value (:filter-term @db/app-state)
+                   :on-change (set-app-state-value :filter-term (fn []
+                                                                  (when-not (s/blank? (:filter-term @db/app-state))
+                                                                    (http/get-file path 0 (:filter-term @db/app-state)))))}]]
+         ;; [:div
+         ;;  [:div "File filter"]
+         ;;  [:div "image only"]
+         ;;  [:div "video only"]
+         ;;  [:div "text only"]]
+         
+         )
        (when (:rename-file? @db/app-state)
          [:div
           [:div.bold "Rename file"]
@@ -166,7 +222,11 @@
             {:type :text
              :value (:filename @db/app-state)
              :on-change (set-app-state-value :filename)}]
-           [:a.btn {:href "javascript:;" :on-click (save-filename path)} "Save"]
+           [:a.btn {:href "javascript:;"
+                    :class (when (not= (:filename @db/app-state) (utils/to-filename path))
+                             "file__renametitlebtn--active")
+                    :on-click (save-filename path)}
+            "Save"]
            [:a.btn {:href "javascript:;" :on-click (toggle-rename-file (utils/to-filename path))} "Cancel"]]])
        (when content
          [:div.file__content
