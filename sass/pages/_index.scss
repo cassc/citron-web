@@ -248,20 +248,23 @@
   }
 
   &__btns{
-    display: flex;
+    display: grid;
     padding-bottom: 1rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     & .btn {
-      margin-right: .5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-
+      &:not(:last-child){
+        margin-right: .5rem;
+      }
+      
       @include respond(phone){
-        font-size: 1.2rem;
-        padding: 8px;
-        padding-left: 12px;
-        padding-right: 12px;
-        margin-right: 1.5rem;
+        font-size: 1rem;
+        
+        &:not(:last-child){
+          margin-right: 1rem;
+        }
       }
       
       & > i {
@@ -367,6 +370,35 @@
         padding-left: 12px;
         padding-right: 12px;
         margin-right: 1.5rem;
+      }
+    }
+  }
+
+  &__mediaplayer{
+    width: 24rem;
+    @include respond(phone){
+      width: 100%;
+    }
+
+    &-speedcontrol {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    &-speed{
+      cursor: pointer;
+      background-color: $color-background;
+      padding: 4px;
+      border-radius: 4px;
+      min-width: 1.5rem;
+      text-align:center;
+      &--active{
+        background-color: $color-tertiary-light;
+        color: white;
+      }
+      &:not(:last-child){
+        margin-right: .5rem;
       }
     }
   }

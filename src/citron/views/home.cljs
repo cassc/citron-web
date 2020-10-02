@@ -84,7 +84,7 @@
          [:pre.mboard__content @db/msg-store]))]))
 
 (defn make-static-path [path]
-  (str "/static/file?path=" path))
+  (str "/staticfile/" path))
 
 (defn- filelist [path files]
   [:div.file__files
@@ -167,6 +167,27 @@
        (when (s/includes? (or mime "") "image")
          [:div.file__imgpreview
           [:img {:src (make-static-path path)}]])
+       (when (s/includes? (or mime "") "audio")
+         [:div.file__imgpreview
+          [:audio.file__mediaplayer {:controls true :src (make-static-path path)}]])
+       (when (s/includes? (or mime "") "video")
+         [:div.file__imgpreview
+          [:video.file__mediaplayer {:controls true :src (make-static-path path)}]
+          (if (:expanded? @db/playback-config-store)
+            [:div.file__mediaplayer-speedcontrol
+             [:div "Speed: "]
+             (doall
+              (for [speed (take 11 (iterate (partial + 0.25) 0.5))]
+                [:div.file__mediaplayer-speed {:key (str "playerspeed." speed)
+                                               :class (when (= speed (:speed @db/playback-config-store))
+                                                        "file__mediaplayer-speed--active")
+                                               :on-click #(db/set-playback-speed speed)}  
+                 (str speed "X")]))]
+            [:div.file__mediaplayer-speedcontrol
+             [:div "Speed: "]
+             [:div.file__mediaplayer-speed
+              {:on-click #(swap! db/playback-config-store assoc :expanded? true)}
+              (str (:speed @db/playback-config-store) "X")]])])
        [filelist path files]
        (when more
          [:div.file__morebtn

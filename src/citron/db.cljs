@@ -1,7 +1,7 @@
 (ns citron.db
   (:require
-
    [taoensso.timbre :as t]
+   [goog.object :as gobj]
    [secretary.core :as secretary :refer-macros [defroute]]
    [alandipert.storage-atom :refer [local-storage]]
    [reagent.core :as r :refer [atom]]
@@ -24,6 +24,23 @@
 
 ;; data updated periodically
 (defonce timed-store (atom {}))
+
+;; playback config
+(defonce playback-config-store (atom {:speed 1.0}))
+
+(defn- set-active-speed [speed]
+  (when-let [player (or
+                     (.querySelector js/document "audio")
+                     (.querySelector js/document "video"))]
+    (gobj/set player "playbackRate" speed)))
+
+(defn set-playback-speed [speed]
+  (swap! playback-config-store assoc :speed speed :expanded? false)
+  (set-active-speed speed))
+
+(defn reset-playback-speed []
+  (swap! playback-config-store assoc :speed 1.0 :expanded? false)
+  (set-active-speed 1.0))
 
 (defn clear-error []
   (swap! app-state dissoc :error))

@@ -47,7 +47,9 @@
                       (swap! db/app-state assoc :error msg)))
          :response-format :json
          :keywords? true
-         :finally #(swap! db/app-state dissoc :page-loading :rename-file?)
+         :finally #(do
+                     (swap! db/app-state dissoc :page-loading :rename-file?)
+                     (db/reset-playback-speed))
          :error-handler (http-error-handler "/file")})))
 
 (defn upload-file [{:keys [file parent]} on-success]
