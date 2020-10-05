@@ -59,3 +59,6 @@
 
 (defn to-filename [path]
   (last (s/split path #"/")))
+
+(defn url-to-uri [url]
+  (str "#" (or (second (s/split url #"#" 2)) "/")))

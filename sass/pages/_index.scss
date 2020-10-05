@@ -440,9 +440,18 @@
   }
 
   &__filter-input{
-    @include cInput;
+    position: relative;
     margin-bottom: 1rem;
-    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & > input{
+      @include cInput;
+      width: 100%;
+    }
+    & > .btn{
+      margin-left: .5rem;
+    }
   }
 }
 

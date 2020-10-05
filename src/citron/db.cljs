@@ -7,6 +7,9 @@
    [reagent.core :as r :refer [atom]]
    [clojure.string :as s]))
 
+;; current page
+(defonce page-store (atom nil))
+
 ;; global app state
 (defonce app-state (local-storage (atom {:file-offset 0}) :app-state))
 

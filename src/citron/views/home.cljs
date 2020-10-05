@@ -3,10 +3,11 @@
    [citron.db :as db]
    [citron.http :as http]
    [citron.utils :as utils]
+   [accountant.core :as a]
    [clojure.string :as s]
    [taoensso.timbre :as t]))
 
-(def app-title "Citron File Manager")
+(def app-title "Citron")
 
 (def page-size 100)
 
@@ -71,8 +72,8 @@
 (defn- toggle-file-filter [_]
   (let [{:keys [filter?]} (swap! db/app-state update :filter? not)]
     (when-not filter?
-      (swap! db/app-state assoc :filter-term "")
-      (http/get-file (:path @db/file-store)))))
+      (a/navigate! "#/user" {:path (:path @db/file-store)
+                            :offset 0}))))
 
 (defn- save-filename [path]
   (fn [_]
@@ -132,8 +133,8 @@
   [:div.file__files
    (let [parent path]
      (doall
-      (for [{:keys [isdir path mime size] :as f} files]
-        [:div.file__filewrapper {:key path :on-click #(goto-file f)}
+      (for [{:keys [isdir path mime size]} files]
+        [:div.file__filewrapper {:key path :on-click #(a/navigate! "#/user" {:path path})}
          [:div.file__filedetails
           [:i.file__fileicon.mdi
            {:class (let [mime (or mime "")]
@@ -161,7 +162,7 @@
        [:div.file__btns
         (when-not (or (:rename-file? @db/app-state) (top? path))
           [:a.btn {:href "javascript:;"
-                   :on-click #(goto-parent f)}
+                   :on-click #(a/navigate! "#/user" {:path (parent path)})}
            [:i {:class "mdi mdi-arrow-up"}]
            "Up"])
         (when-not (or (:rename-file? @db/app-state) (and isdir (pos? (count files))))
@@ -200,18 +201,17 @@
            [:i.mdi.mdi-filter-outline]
            "Filter"])]
        (when (and isdir (:filter? @db/app-state))
-         [:div
-          [:input.file__filter-input {:type :text :value (:filter-term @db/app-state)
-                   :on-change (set-app-state-value :filter-term (fn []
-                                                                  (when-not (s/blank? (:filter-term @db/app-state))
-                                                                    (http/get-file path 0 (:filter-term @db/app-state)))))}]]
-         ;; [:div
-         ;;  [:div "File filter"]
-         ;;  [:div "image only"]
-         ;;  [:div "video only"]
-         ;;  [:div "text only"]]
-         
-         )
+         [:div.file__filter-input
+          [:input {:type :text :value (:filter-term @db/app-state)
+                   :placeholder "Search"
+                   :on-change (set-app-state-value :filter-term)
+                   :on-key-press (fn [e]
+                                   (when (= 13 (.-charCode e))
+                                     (a/navigate! "#/user" {:path path :filter-term (:filter-term @db/app-state "")})))}]
+          [:a.btn [:i.mdi.mdi-keyboard-return
+                   {:href "javascript:;"
+                    :on-click #(a/navigate! "#/user" {:path path :filter-term (:filter-term @db/app-state "")})}]
+           " Go"]])
        (when (:rename-file? @db/app-state)
          [:div
           [:div.bold "Rename file"]
@@ -262,7 +262,7 @@
            [:a.btn {:href "javascript:;" :on-click #(http/get-file path (+ offset page-size))}
             "Load"]]])])))
 
-(defn- user-page []
+(defn user-page []
   (fn []
     [:div.user
      [:div.user__title.user__title--pc
@@ -287,15 +287,4 @@
        [:input {:type :password :placeholder "Password" :value (:password @db/login-store) :on-change (set-login-value :password)}]]
       [:input.btn {:type :button :on-click login :value "Login"}]]]))
 
-(defn index-page []
-  (fn []
-    [:div.main
-     (when-let [err (:error @db/app-state)]
-       [:div.error {:on-click db/clear-error} err])
-     (if (:user @db/app-state)
-       [user-page]
-       [login-page])
-     (when (:page-loading @db/app-state) 
-       [:div.popup.popup--open
-        [:div.pagespinner
-         [:div.lds-dual-ring]]])]))
+

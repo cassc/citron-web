@@ -288,7 +288,7 @@ body {
   background-color: #fff;
   border: 1px solid #c1c1c1;
   cursor: pointer;
-  transition: all .2s ease-out; }
+  /* transition: all .2s ease-out; */ }
 
 .btn:hover {
   /* background-image: linear-gradient(rgba($color-light-gray, .1), rgba($color-light-gray-3, .3)); */
@@ -831,7 +831,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(161, 220, 112, 0.3);
+    background-color: rgba(232, 232, 232, 0.3);
     width: 32rem;
     padding: 2rem;
     border-radius: 4px;
@@ -867,7 +867,7 @@ body {
     top: .5rem;
     padding: 4px;
     padding-left: 1rem;
-    background-color: rgba(161, 220, 112, 0.3);
+    background-color: rgba(232, 232, 232, 0.3);
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr); }
@@ -938,9 +938,18 @@ body {
       .mboard textarea {
         height: 20vh; } }
   .mboard__content {
-    padding-top: 1rem;
-    white-space: pre-wrap;
-    word-wrap: break-word; }
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid lightgrey;
+    position: relative; }
+    .mboard__content > i {
+      cursor: pointer;
+      position: absolute;
+      font-size: 1.2rem;
+      right: 0.2rem; }
+    .mboard__content > pre {
+      white-space: pre-wrap;
+      word-wrap: break-word; }
   .mboard__btn-edit {
     margin-left: 1rem; }
     .mboard__btn-edit--editing {
@@ -969,20 +978,20 @@ body {
       word-wrap: break-word;
       line-break: anywhere; }
   .file__btns {
-    display: flex;
-    padding-bottom: 1rem; }
+    display: grid;
+    padding-bottom: 1rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .file__btns .btn {
-      margin-right: .5rem;
       display: flex;
       align-items: center;
       justify-content: center; }
+      .file__btns .btn:not(:last-child) {
+        margin-right: .5rem; }
       @media only screen and (max-width: 37.5em) {
         .file__btns .btn {
-          font-size: 1.2rem;
-          padding: 8px;
-          padding-left: 12px;
-          padding-right: 12px;
-          margin-right: 1.5rem; } }
+          font-size: 1rem; }
+          .file__btns .btn:not(:last-child) {
+            margin-right: 1rem; } }
       .file__btns .btn > i {
         margin-right: 4px; }
   .file #fileuploader {
@@ -1002,14 +1011,16 @@ body {
     cursor: pointer;
     padding: 6px;
     background: rgba(217, 217, 218, 0.6);
-    border-radius: 6px; }
+    border-radius: 6px;
+    position: relative; }
   .file__filedetails {
     display: flex;
     justify-content: flex-start;
     align-items: center; }
   .file__filemeta {
-    display: flex;
-    justify-content: space-between;
+    position: absolute;
+    right: .3rem;
+    bottom: .3rem;
     font-size: 0.8rem;
     font-family: monospace; }
   .file__filename {
@@ -1037,7 +1048,8 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-family: monospace; }
+    font-family: monospace;
+    margin-bottom: 1rem; }
     .file__renametitle > * {
       margin-right: 1rem; }
     .file__renametitle > input {
@@ -1065,3 +1077,50 @@ body {
           padding-left: 12px;
           padding-right: 12px;
           margin-right: 1.5rem; } }
+  .file__renametitlebtn--active {
+    animation: glow 1.0s infinite alternate;
+    transition: border 1.0s linear, box-shadow 1.0s linear; }
+  .file__mediaplayer {
+    width: 100%; }
+    @media only screen and (max-width: 37.5em) {
+      .file__mediaplayer {
+        width: 100%; } }
+    .file__mediaplayer-speedcontrol {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center; }
+    .file__mediaplayer-speed {
+      cursor: pointer;
+      background-color: #E8E8E8;
+      padding: 4px;
+      border-radius: 4px;
+      min-width: 1.5rem;
+      text-align: center; }
+      .file__mediaplayer-speed--active {
+        background-color: #009F6B;
+        color: white; }
+      .file__mediaplayer-speed:not(:last-child) {
+        margin-right: .5rem; }
+  .file__imgthumbnail {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .file__imgthumbnail img {
+      max-width: 80%;
+      max-height: 4rem; }
+  .file__filter--active {
+    animation: glow 1.0s infinite alternate;
+    transition: border 1.0s linear, box-shadow 1.0s linear; }
+  .file__filter-input {
+    font-family: inherit;
+    color: inherit;
+    border-radius: 4px;
+    border: 1px solid #E8E8E8;
+    padding: 0;
+    height: 2rem;
+    padding-left: .35rem;
+    background-color: #fff;
+    margin-bottom: 1rem;
+    width: 100%; }
+    .file__filter-input:hover {
+      border-color: #B2B2B2; }

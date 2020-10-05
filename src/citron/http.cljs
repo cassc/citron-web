@@ -3,7 +3,8 @@
   (:require
    [citron.db :as db]
    [citron.utils :as utils]
-   
+
+   [accountant.core :as accountant]
    [clojure.core.async :as a :refer [chan]]
    [ajax.core :refer [PUT POST GET DELETE json-response-format json-request-format]]
    [clojure.string :as s]
@@ -32,12 +33,11 @@
   ([path]
    (get-file path 0))
   ([path offset]
-   (swap! db/app-state dissoc :filter? :filter-term)
    (get-file path offset ""))
   ([path offset term]
    (swap! db/app-state assoc :page-loading true :error nil)
    (GET "/file"
-        {:params {:path path :offset offset :term term}
+        {:params {:path (or path ".") :offset (or offset 0) :term (or term "")}
          :handler (fn [{:keys [code data msg]}]
                     (if (zero? code)
                       (if (zero? offset)
@@ -132,7 +132,7 @@
         :error-handler (http-error-handler "/msg")}))
 
 (defn login [cred]
-  (swap! db/app-state dissoc :error)
+  (swap! db/app-state assoc :error nil :page-loading true)
   (POST "/pub/login"
         {:params cred
          :format :json
@@ -141,8 +141,10 @@
                       (do
                         (swap! db/app-state assoc :user data)
                         (get-msg-board)
-                        (get-file))
+                        (accountant/navigate! "#/user"))
                       (swap! db/app-state assoc :error msg)))
          :response-format :json
          :keywords? true
+         :finally (fn []
+                    (swap! db/app-state assoc :page-loading nil))
          :error-handler (http-error-handler "/pub/login")}))

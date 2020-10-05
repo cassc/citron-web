@@ -12,6 +12,7 @@
                  [secretary "1.2.3"]
                  [alandipert/storage-atom "1.2.4"]
                  [cljs-ajax "0.7.3"]
+                 [venantius/accountant "0.2.5"]
                  [reagent "0.8.1"]
                  [reagent-utils "0.3.1" :exclusions [[reagent]]]
                  [nilenso/wscljs "0.2.0"]
