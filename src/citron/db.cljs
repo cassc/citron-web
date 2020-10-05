@@ -34,6 +34,9 @@
 ;; playback config
 (defonce playback-config-store (atom {:speed 1.0}))
 
+(defonce audioplayer-state (atom {:playlist []
+                                  :show? false}))
+
 (defn- set-active-speed [speed]
   (when-let [player (or
                      (.querySelector js/document "audio")

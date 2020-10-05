@@ -1,8 +1,9 @@
 (ns citron.utils
   (:require
-   [cljs-time.coerce :refer [from-long to-local-date-time]]
-   [cljs-time.core :refer [today to-default-time-zone]]
-   [cljs-time.format :refer [unparse-local formatters formatter unparse]]
+   [taoensso.timbre :as t]
+   [cljs-time.coerce :refer [from-long]]
+   [cljs-time.core :refer [to-default-time-zone]]
+   [cljs-time.format :refer [unparse-local formatters formatter]]
    [clojure.string :as s]))
 
 (defn set-hash! [loc]
@@ -62,3 +63,15 @@
 
 (defn url-to-uri [url]
   (str "#" (or (second (s/split url #"#" 2)) "/")))
+
+(defn scroll-top []
+  (.scrollTo js/window 0 0))
+
+;; get current uri (for secretary dispatch). eg., #/user?path=xxx
+(defn get-uri-hash []
+  (.-hash js/location))
+
+;; check meta map for music file
+(defn music? [{:keys [mime]}]
+  (and mime (s/starts-with? mime "audio")))
+

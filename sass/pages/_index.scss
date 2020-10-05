@@ -357,6 +357,9 @@
 
   &__content{
     margin-top: 1rem;
+    & pre{
+      @include breakLine;
+    }
   }
 
   &__renametitle{
@@ -456,3 +459,16 @@
 }
 
 
+.audioplayer{
+  position: fixed;
+  top: 40%;
+  right: 1rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 100000px;
+  background-color: rgba($color-red, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}

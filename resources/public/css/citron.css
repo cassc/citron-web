@@ -1044,6 +1044,10 @@ body {
     margin-bottom: 2rem; }
   .file__content {
     margin-top: 1rem; }
+    .file__content pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      line-break: anywhere; }
   .file__renametitle {
     display: flex;
     justify-content: flex-start;
@@ -1131,3 +1135,16 @@ body {
         border-color: #B2B2B2; }
     .file__filter-input > .btn {
       margin-left: .5rem; }
+
+.audioplayer {
+  position: fixed;
+  top: 40%;
+  right: 1rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 100000px;
+  background-color: rgba(255, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white; }

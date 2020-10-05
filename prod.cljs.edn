@@ -1,2 +1,5 @@
+^{
+  :target-dir "resources/public/cljs-out/"}
 {:main citron.core
+ :output-to "resources/public/cljs-out/main.js"
  :externs ^:replace ["externs/common.js"]}

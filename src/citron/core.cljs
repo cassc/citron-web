@@ -3,6 +3,7 @@
   (:require
    [citron.views.home :refer [user-page login-page]]
    [citron.http :as http]
+   [citron.funcs :as f]
    [citron.db :as db]
    [citron.utils :as utils]
 
@@ -28,6 +29,7 @@
 ;; config and states
 
 (defn page []
+  (utils/scroll-top)
   [:div.main
    (when-let [err (:error @db/app-state)]
      [:div.error {:on-click db/clear-error} err])
@@ -35,24 +37,35 @@
    (when (:page-loading @db/app-state) 
      [:div.popup.popup--open
       [:div.pagespinner
-       [:div.lds-dual-ring]]])])
+       [:div.lds-dual-ring]]])
+   (when (:show? @db/audioplayer-state true)
+     [:div.audioplayer
+      ;;[:audio {:controls true :src ""}]
+      (when (some utils/music? (:files @db/file-store))
+        [:a.btn {:href "javascript:;" :on-click f/add-to-playlist} "Add"])
+      ])])
 
-(defroute "/" [] (if (:user @db/app-state)
-                   (a/navigate! "#/user")
-                   (a/navigate! "#/login")))
+(defroute "/" []
+  (if (:user @db/app-state)
+    (a/navigate! "#/user")
+    (a/navigate! "#/login")))
 
-(defroute "/login" [] (if (:user @db/app-state)
-                        (a/navigate! "#/user")
-                        (reset! db/page-store login-page)))
+(defroute "/login" [query-params]
+  (swap! db/app-state assoc :return-url (:return-url query-params))
+  (if (:user @db/app-state)
+    (a/navigate! (:return-url query-params "#/user"))
+    (reset! db/page-store login-page)))
 
-(defroute "/user" [query-params]
+(defroute "/user"
+  [query-params]
   (t/info "query-params" query-params)
   (if (:user @db/app-state)
     (let [{:keys [path offset filter-term]} query-params]
       (swap! db/app-state assoc :filter-term filter-term :filter? (not (s/blank? filter-term)))
       (http/get-file path (if (s/blank? offset) 0 (js/parseInt offset)) filter-term)
       (reset! db/page-store user-page))
-    (a/navigate! "#/login")))
+    (let [url (utils/get-uri-hash)]
+      (a/navigate! "#/login" {:return-url (if (s/blank? url) "#/user" url)}))))
 
 (defn mount-components []
   (r/render [#'page] (.getElementById js/document "app")))

@@ -13,7 +13,9 @@
 (defn http-error-handler [uri]
   (fn [err]
     (if (= 403 (:status err))
-      (swap! db/app-state dissoc :user)
+      (do
+        (swap! db/app-state dissoc :user)
+        (accountant/navigate! "#/login" {:return-url (utils/get-uri-hash)}))
       (do
         (t/error uri err)
         (swap! db/app-state assoc :error (str "Error: " err))))))
@@ -141,7 +143,7 @@
                       (do
                         (swap! db/app-state assoc :user data)
                         (get-msg-board)
-                        (accountant/navigate! "#/user"))
+                        (accountant/navigate! (:return-url @db/app-state "#/user")))
                       (swap! db/app-state assoc :error msg)))
          :response-format :json
          :keywords? true
