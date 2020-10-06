@@ -31,7 +31,7 @@
 
   
   
-  & .error{
+  & .hint{
     z-index: 100;
     cursor: pointer;
     position: fixed;
@@ -40,14 +40,31 @@
     padding: .5rem;
     padding-right: .8rem;
     padding-left: 2.2rem;
-    background: rgba(239, 239, 117, 0.6);
+    background: rgba($color-tertiary-light, 0.6);
     border-radius: 4px;
+
     &::before{
       position: absolute;
       left: .8rem;
-      content: "⚠";
       transform: scale(1.4);
     }
+
+    &--info{
+      color: white;
+      &::before{
+        content: "ⓘ";
+      }
+    }
+    
+    &--error{
+      background: rgba(239, 239, 117, 0.6);
+      color: $color-red;
+      &::before{
+        content: "⚠";
+      }
+    }
+    
+    
   }
   
   & .login{
@@ -459,16 +476,89 @@
 }
 
 
-.audioplayer{
-  position: fixed;
-  top: 40%;
-  right: 1rem;
-  width: 4rem;
-  height: 4rem;
-  border-radius: 100000px;
-  background-color: rgba($color-red, 0.8);
-  display: flex;
-  justify-content: center;
+.floating-menu{
   align-items: center;
   color: white;
+  position: fixed;
+  bottom: 4rem;
+  right: 1rem;
+  border-radius: 2rem;
+  background-color: rgba($color-tertiary-light, 0.6);
+  display: flex;
+  align-items: center;
+  height: 4rem;
+  
+  color: white;
+
+  & > a{
+    width: 4rem;
+    border-radius: 100000px;
+    display: flex;
+    text-align:center;
+    justify-content: center;
+    &,
+    &:link,
+    &:visited {
+      text-decoration:none;
+      color: white;
+    }
+  }
+  
+  & i {
+    font-size: 1.6rem;
+  }
+  
+  &--collapsed{
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--expanded{
+
+  }
+
+  &-tracktitle{
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 6rem;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &-audioplayer{
+    display: none;
+    width: 0;
+  }
+  &-progress{
+    position: absolute;
+    z-index: 1000;
+    bottom: 6px;
+    right: 2rem;
+    width: calc(100% - 4rem);
+    height: 4px;
+    background-color: rgba($color-secondary-light, 0.4);
+    border-radius: 100px;
+  }
+  @for $i from 1 through 100 {
+    &-progress--#{$i}::after {
+      position: absolute;
+      content:"";
+      // background-image: linear-gradient(to right, $color-prog-start 0%, $color-prog-end 100%);
+      background-color: $color-secondary-light; 
+      width: $i / 100 * 100%;
+      height: 5px;
+      top: -1px;
+      left: 0;
+      border-radius: 13px;
+    }
+  }
+}
+
+#hidden-audioplayer{
+  display: none;
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

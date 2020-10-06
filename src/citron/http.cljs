@@ -1,11 +1,10 @@
 (ns citron.http
-  (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require
    [citron.db :as db]
    [citron.utils :as utils]
 
    [accountant.core :as accountant]
-   [clojure.core.async :as a :refer [chan]]
+   [clojure.core.async :as a]
    [ajax.core :refer [PUT POST GET DELETE json-response-format json-request-format]]
    [clojure.string :as s]
    [taoensso.timbre :as t]))
@@ -18,7 +17,7 @@
         (accountant/navigate! "#/login" {:return-url (utils/get-uri-hash)}))
       (do
         (t/error uri err)
-        (swap! db/app-state assoc :error (str "Error: " err))))))
+        (db/set-error (str "Error: " err))))))
 
 
 (defn set-done! [ch]
@@ -45,7 +44,7 @@
                       (if (zero? offset)
                         (reset! db/file-store data)
                         (swap! db/file-store merge-filelist data))
-                      (swap! db/app-state assoc :error msg)))
+                      (db/set-error msg)))
          :response-format :json
          :keywords? true
          :finally #(do
@@ -64,7 +63,7 @@
         :handler (fn [{:keys [code msg] :as resp}]
                    (if (zero? code)
                      (on-success)
-                     (swap! db/app-state assoc :error msg)))
+                     (db/set-error msg)))
         :error-handler (http-error-handler "/file")}))
 
 (defn delete-file [f on-success]
@@ -77,7 +76,7 @@
            :handler (fn [{:keys [code msg]}]
                       (if (zero? code)
                         (on-success)
-                        (swap! db/app-state assoc :error msg)))
+                        (db/set-error msg)))
            :error-handler (http-error-handler "/file")}))
 
 (defn rename-file [path filename]
@@ -90,7 +89,7 @@
         :handler (fn [{:keys [code msg]}]
                    (if (zero? code)
                      (get-file (s/replace path (utils/to-filename path) filename))
-                     (swap! db/app-state assoc :error msg)))
+                     (db/set-error msg)))
         :error-handler (http-error-handler "/rename")}))
 
 (defn get-msg-board []
@@ -101,7 +100,7 @@
         :handler (fn [{:keys [code data msg]}]
                    (if (zero? code)
                      (reset! db/msg-store data)
-                     (swap! db/app-state assoc :error msg)))
+                     (db/set-error msg)))
         :error-handler (http-error-handler "/msg")}))
 
 (defn put-msg-board [msg]
@@ -116,7 +115,7 @@
                      (do
                        (reset! db/temp-msg-store "")
                        (get-msg-board))
-                     (swap! db/app-state assoc :error msg)))
+                     (db/set-error msg)))
         :error-handler (http-error-handler "/msg")}))
 
 
@@ -130,7 +129,7 @@
         :handler (fn [{:keys [code msg]}]
                    (if (zero? code)
                      (get-msg-board)
-                     (swap! db/app-state assoc :error msg)))
+                     (db/set-error msg)))
         :error-handler (http-error-handler "/msg")}))
 
 (defn login [cred]
@@ -144,7 +143,7 @@
                         (swap! db/app-state assoc :user data)
                         (get-msg-board)
                         (accountant/navigate! (:return-url @db/app-state "#/user")))
-                      (swap! db/app-state assoc :error msg)))
+                      (db/set-error msg)))
          :response-format :json
          :keywords? true
          :finally (fn []

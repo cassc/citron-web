@@ -75,3 +75,14 @@
 (defn music? [{:keys [mime]}]
   (and mime (s/starts-with? mime "audio")))
 
+(defn get-element-by-id [id]
+  (.getElementById js/document id))
+
+(defn clamp [nmin nmax n]
+  (if (< n nmin) nmin (if (> n nmax) nmax n)))
+
+(defn wrap-no-default [func]
+  (fn [e]
+    (.stopPropagation e)
+    (.preventDefault e)
+    (func e)))

@@ -4,6 +4,7 @@
    [citron.db :as db]
    [citron.http :as http]
    [citron.utils :as utils]
+   [reagent.core :refer [create-class dom-node]]
    [accountant.core :as a]
    [clojure.string :as s]
    [taoensso.timbre :as t]))
@@ -55,9 +56,6 @@
                [:i.mdi.mdi-delete-forever {:on-click #(http/delete-msg id)}])
              [:pre msg]]))))]))
 
-(defn make-static-path [path]
-  (str "/staticfile/" path))
-
 (defn- filelist [path files]
   [:div.file__files
    (let [parent path]
@@ -74,7 +72,7 @@
                        :else "mdi-format-page-break"))}]
           [:div.file__filename (f/to-display-path parent path)]]
          (when (s/includes? (or mime "") "image")
-           [:div.file__imgthumbnail [:img {:src (make-static-path path)}]])
+           [:div.file__imgthumbnail [:img {:src (f/make-static-path path)}]])
          [:div.file__filemeta
           [:div]
           [:div (utils/readable-filesize size)]]])))])
@@ -103,7 +101,7 @@
          [:i {:class "mdi mdi-rename-box"}]
          "Rename"])
       (when-not (or (:rename-file? @db/app-state) isdir)
-        [:a.btn {:href (make-static-path path) :target "_blank"}
+        [:a.btn {:href (f/make-static-path path) :target "_blank"}
          [:i {:class "mdi mdi-eye"}]
          "Download"])
       (when isdir
@@ -128,10 +126,10 @@
                           "file__filter--active")}
          [:i.mdi.mdi-filter-outline]
          "Filter"])
-      #_(when (and isdir (some (fn [{:keys [mime]}]
+      (when (and isdir (some (fn [{:keys [mime]}]
                                (and mime (s/starts-with? mime "audio")))
                              files))
-        [:a.btn {:href "javascript:;" :on-click #(play-all-inside f)}
+        [:a.btn {:href "javascript:;" :on-click f/add-to-playlist}
          [:i.mdi.mdi-play-circle]
          "Play All"])]
      (when (and isdir (:filter? @db/app-state))
@@ -167,13 +165,13 @@
         [:pre content]])
      (when (s/includes? (or mime "") "image")
        [:div.file__imgpreview
-        [:img {:src (make-static-path path)}]])
+        [:img {:src (f/make-static-path path)}]])
      (when (s/includes? (or mime "") "audio")
        [:div.file__imgpreview
-        [:audio.file__mediaplayer {:controls true :src (make-static-path path)}]])
+        [:audio.file__mediaplayer {:controls true :src (f/make-static-path path)}]])
      (when (s/includes? (or mime "") "video")
        [:div.file__imgpreview
-        [:video.file__mediaplayer {:controls true :src (make-static-path path)}]
+        [:video.file__mediaplayer {:controls true :src (f/make-static-path path)}]
         (if (:expanded? @db/playback-config-store)
           [:div.file__mediaplayer-speedcontrol
            [:div "Speed: "]
@@ -196,25 +194,24 @@
          [:a.btn {:href "javascript:;" :on-click #(http/get-file path (+ offset f/page-size))}
           "Load"]]])]))
 
+(defn- user-common-panel [right-panel]
+  [:div.user
+   [:div.user__title.user__title--pc
+    [:div.user__title-left (:now-as-string @db/timed-store)]
+    [:div.user__title-center f/app-title]
+    [:div.user__title-right]]
+   [:div.user__title.user__title--phone
+    [:div.user__title-center f/app-title]
+    [:div.user__title-right (:now-as-string @db/timed-store)]]
+   [:div.user__panel
+    [msg-panel]
+    [right-panel]]])
+
 (defn user-page []
-  (fn []
-    [:div.user
-     [:div.user__title.user__title--pc
-      [:div.user__title-left (:now-as-string @db/timed-store)]
-      [:div.user__title-center f/app-title]
-      [:div.user__title-right]]
-     [:div.user__title.user__title--phone
-      [:div.user__title-center f/app-title]
-      [:div.user__title-right (:now-as-string @db/timed-store)]]
-     [:div.user__panel
-      [msg-panel]
-      [file-panel]]]))
+  [user-common-panel file-panel])
 
 (defn login-page []
-  [:form.login {:on-submit (fn [e]
-                             (.stopPropagation e)
-                             (.preventDefault e)
-                             (f/login))}
+  [:form.login {:on-submit (utils/wrap-no-default (fn [_] (f/login)))}
    [:h1 f/app-title]
    [:div
     [:div.login__title "Please login"]
@@ -224,3 +221,37 @@
     [:input.btn {:type :submit :value "Login"}]]])
 
 
+(defn hidden-audio-player []
+  (create-class
+   {:reagent-render
+    (fn []
+      [:audio#hidden-audioplayer {:src "" :preload "none"}])
+    :component-will-unmount (fn [_]
+                              (t/warn "hidden-audio-player unmounting"))
+    :component-did-mount (fn [_]
+                           (t/warn "hidden-audio-player mounted")
+                           (f/init-audio-src!)
+                           (f/reg-music-player-events!))}))
+
+(defn audio-player []
+  (when (and (:user @db/app-state)
+             (seq (:playlist @db/audioplayer-state)))
+    (if (:show? @db/floatingmenu-state)
+      [:div.floating-menu.floating-menu--expanded
+       [:a {:href "javascript:;" :on-click f/play-prev-track} [:i.mdi.mdi-skip-previous-circle]]
+       [:a {:href "javascript:;" :on-click f/toggle-audio-play} (if (:paused? @db/audioplayer-state)
+                                                                  [:i.fas.fa-play-circle]
+                                                                  [:i.fas.fa-pause-circle])]
+       [:a {:href "javascript:;" :on-click f/play-next-track} [:i.mdi.mdi-skip-next-circle]]
+       [:div.floating-menu-tracktitle (f/current-track-name (:id @db/audioplayer-state 0))]
+       [:a {:href "javascript:;" :on-click f/toggle-audio-shuffle} (if (:shuffle? @db/audioplayer-state)
+                                                                     [:i.mdi.mdi-shuffle-variant]
+                                                                     [:i.mdi.mdi-shuffle-disabled])]
+       [:a {:href "javascript:;" :on-click f/toggle-floating-menu} [:i.mdi.mdi-playlist-play]]
+       [:a {:href "javascript:;" :on-click f/toggle-floating-menu} [:i {:class "fas fa-times"}]]
+       [:div.floating-menu-progress {:class (str "floating-menu-progress--" (int
+                                                                             (/ (:current-time @db/audioplayer-state)
+                                                                                (:duration @db/audioplayer-state 1)
+                                                                                0.01)))}]]
+      [:div.floating-menu.floating-menu--collapsed
+       [:a {:href "javascript:;" :on-click f/toggle-floating-menu} [:i.mdi.mdi-menu]]])) )

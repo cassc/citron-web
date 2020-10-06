@@ -1,9 +1,8 @@
 (ns citron.core
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require
-   [citron.views.home :refer [user-page login-page]]
+   [citron.views.home :refer [user-page login-page audio-player hidden-audio-player]]
    [citron.http :as http]
-   [citron.funcs :as f]
    [citron.db :as db]
    [citron.utils :as utils]
 
@@ -32,18 +31,18 @@
   (utils/scroll-top)
   [:div.main
    (when-let [err (:error @db/app-state)]
-     [:div.error {:on-click db/clear-error} err])
+     [:div.hint {:class (str "hint--" (:error-level @db/app-state "error"))
+                 :on-click db/clear-error}
+      err])
    [@db/page-store]
    (when (:page-loading @db/app-state) 
      [:div.popup.popup--open
       [:div.pagespinner
        [:div.lds-dual-ring]]])
-   (when (:show? @db/audioplayer-state true)
-     [:div.audioplayer
-      ;;[:audio {:controls true :src ""}]
-      (when (some utils/music? (:files @db/file-store))
-        [:a.btn {:href "javascript:;" :on-click f/add-to-playlist} "Add"])
-      ])])
+   ;; use key to prevent this component gets unmounted
+   ;; react uses location url as key by default
+   ^{:key "hidden-audio-player"} [hidden-audio-player]
+   [audio-player]])
 
 (defroute "/" []
   (if (:user @db/app-state)
@@ -68,7 +67,7 @@
       (a/navigate! "#/login" {:return-url (if (s/blank? url) "#/user" url)}))))
 
 (defn mount-components []
-  (r/render [#'page] (.getElementById js/document "app")))
+  (r/render [page] (utils/get-element-by-id "app")))
 
 (defn hook-browser-navigation! []
   (doto (History.)

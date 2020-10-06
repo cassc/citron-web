@@ -2,10 +2,13 @@
   (:require
    [taoensso.timbre :as t]
    [goog.object :as gobj]
+   [clojure.core.async :as a]
    [secretary.core :as secretary :refer-macros [defroute]]
    [alandipert.storage-atom :refer [local-storage]]
    [reagent.core :as r :refer [atom]]
    [clojure.string :as s]))
+
+(def hidden-audio-player-id "hidden-audioplayer")
 
 ;; current page
 (defonce page-store (atom nil))
@@ -34,8 +37,16 @@
 ;; playback config
 (defonce playback-config-store (atom {:speed 1.0}))
 
-(defonce audioplayer-state (atom {:playlist []
-                                  :show? false}))
+;; floating menu
+(defonce floatingmenu-state (atom {:show? false}))
+
+(defonce audioplayer-state (local-storage (atom {:playlist []
+                                                 :shuffle? false
+                                                 :paused? true
+                                                 :id 0 ;; current playing id
+                                                 :prev-id 0
+                                                 :expanded? false})
+                                          :audioplayer-state))
 
 (defn- set-active-speed [speed]
   (when-let [player (or
@@ -52,7 +63,21 @@
   (set-active-speed 1.0))
 
 (defn clear-error []
-  (swap! app-state dissoc :error))
+  (swap! app-state dissoc :error :error-level))
+
+(defn set-error
+  "Set error message, with optional timeout. After timeout, message will
+  be cleared automatically."
+  ([msg]
+   (set-error msg 0))
+  ([msg ttl]
+   (set-error msg ttl :error))
+  ([msg ttl error-level]
+   (swap! app-state assoc :error msg :error-level (name error-level))
+   (when (and ttl (pos? ttl))
+     (a/go
+       (a/<! (a/timeout ttl))
+       (clear-error)))))
 
 (defn update-timed-store [ky vl]
   (swap! timed-store assoc ky vl))
