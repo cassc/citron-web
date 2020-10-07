@@ -81,7 +81,7 @@
   (let [{:keys [more path files isdir content mime offset total] :as f} @db/file-store]
     [:div.file
      [:div.file__title
-      [:span.file__title--home {:on-click #(f/goto-file {:path "."})}
+      [:span.file__title--home {:on-click #(a/navigate! "/user")}
        [:i.mdi-home.mdi]]
       [:span.file__title-path (str (when-not (= "." path)
                                      (f/to-display-path path)))]]
@@ -93,7 +93,7 @@
          "Up"])
       (when-not (or (:rename-file? @db/app-state) (and isdir (pos? (count files))))
         [:a.btn {:href "javascript:;"
-                 :on-click #(http/delete-file f (fn [] (f/goto-parent f)))}
+                 :on-click #(http/delete-file f (fn [] (a/navigate! "/user" {:path (f/parent path)})))}
          [:i {:class "mdi mdi-delete-circle"}]
          "Delete"])
       (when-not (or (:rename-file? @db/app-state) isdir)
@@ -235,7 +235,9 @@
 
 (defn audio-player []
   (when (and (:user @db/app-state)
-             (seq (:playlist @db/audioplayer-state)))
+             (seq (:playlist @db/audioplayer-state))
+             (s/starts-with? (utils/url-to-uri (.-URL js/document))
+                             "#/user"))
     (if (:show? @db/floatingmenu-state)
       [:div.floating-menu.floating-menu--expanded
        [:a {:href "javascript:;" :on-click f/play-prev-track} [:i.mdi.mdi-skip-previous-circle]]
@@ -247,11 +249,55 @@
        [:a {:href "javascript:;" :on-click f/toggle-audio-shuffle} (if (:shuffle? @db/audioplayer-state)
                                                                      [:i.mdi.mdi-shuffle-variant]
                                                                      [:i.mdi.mdi-shuffle-disabled])]
-       [:a {:href "javascript:;" :on-click f/toggle-floating-menu} [:i.mdi.mdi-playlist-play]]
-       [:a {:href "javascript:;" :on-click f/toggle-floating-menu} [:i {:class "fas fa-times"}]]
+       [:a {:href "javascript:;" :on-click #(a/navigate! "#/playlist")} [:i.mdi.mdi-playlist-play]]
+       [:a {:href "javascript:;" :on-click f/toggle-floating-menu} [:i.mdi.mdi-close]]
        [:div.floating-menu-progress {:class (str "floating-menu-progress--" (int
                                                                              (/ (:current-time @db/audioplayer-state)
                                                                                 (:duration @db/audioplayer-state 1)
                                                                                 0.01)))}]]
       [:div.floating-menu.floating-menu--collapsed
        [:a {:href "javascript:;" :on-click f/toggle-floating-menu} [:i.mdi.mdi-menu]]])) )
+
+(defn playlist-panel []
+  [:div.playlist
+   [:div.playlist__title
+    [:span.file__title--home {:on-click #(a/navigate! "#/user")}
+     [:i.mdi-home.mdi]]
+    [:span "Playlist"]]
+   [:div.boxplayer
+    [:a {:href "javascript:;" :on-click f/play-prev-track} [:i.mdi.mdi-skip-previous-circle]]
+    [:a {:href "javascript:;" :on-click f/audio-rewind} [:i.mdi.mdi-rewind]]
+    [:a {:href "javascript:;" :on-click f/toggle-audio-play} (if (:paused? @db/audioplayer-state)
+                                                               [:i.fas.fa-play-circle]
+                                                               [:i.fas.fa-pause-circle])]
+    [:a {:href "javascript:;" :on-click f/audio-fastforward} [:i.mdi.mdi-fast-forward]]
+    [:a {:href "javascript:;" :on-click f/play-next-track} [:i.mdi.mdi-skip-next-circle]]
+    [:div.boxplayer__title
+     [:div (f/current-track-name (:id @db/audioplayer-state 0))]
+     [:div.boxplayer__smalltitle
+      (str (utils/to-mmss (:current-time @db/audioplayer-state 0))
+           "/"
+           (utils/to-mmss (:duration @db/audioplayer-state 0)))]]
+    [:a {:href "javascript:;" :on-click f/toggle-audio-shuffle} (if (:shuffle? @db/audioplayer-state)
+                                                                  [:i.mdi.mdi-shuffle-variant]
+                                                                  [:i.mdi.mdi-shuffle-disabled])]
+    [:a {:href "javascript:;" :on-click f/clear-playlist} [:i.mdi.mdi-delete-empty]]
+    [:div.boxplayer__progress {:class (str "boxplayer__progress--" (int
+                                                                    (/ (:current-time @db/audioplayer-state)
+                                                                       (:duration @db/audioplayer-state 1)
+                                                                       0.01)))}]]
+   [:div.playlist__items
+    (doall
+     (for [[id {:keys [path] :as f}] (mapv vector (range) (:playlist @db/audioplayer-state))
+           :let [playing? (= path (f/current-track-path (:id @db/audioplayer-state)))]]
+       ^{:key (str "pl." path)}
+       [:div.playlist__item
+        [:i.mdi.mdi-play.playlist__playicon
+         {:class (when playing? "playlist__playicon--playing")}]
+        [:div.playlist__item--link
+         {:on-click #(f/play-nth-track id)}
+         (f/to-display-path path)]
+        [:i.mdi.mdi-delete.playlist__item--delete {:on-click #(f/remove-track id f)}]]))]])
+
+(defn playlist-page []
+  [user-common-panel playlist-panel])

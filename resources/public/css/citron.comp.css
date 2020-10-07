@@ -811,7 +811,7 @@ body {
   align-items: center;
   justify-content: center;
   position: relative; }
-  .main .error {
+  .main .hint {
     z-index: 100;
     cursor: pointer;
     position: fixed;
@@ -820,13 +820,21 @@ body {
     padding: .5rem;
     padding-right: .8rem;
     padding-left: 2.2rem;
-    background: rgba(239, 239, 117, 0.6);
+    background: rgba(0, 159, 107, 0.6);
     border-radius: 4px; }
-    .main .error::before {
+    .main .hint::before {
       position: absolute;
       left: .8rem;
-      content: "⚠";
       transform: scale(1.4); }
+    .main .hint--info {
+      color: white; }
+      .main .hint--info::before {
+        content: "ⓘ"; }
+    .main .hint--error {
+      background: rgba(239, 239, 117, 0.6);
+      color: #FF0000; }
+      .main .hint--error::before {
+        content: "⚠"; }
   .main .login {
     display: flex;
     flex-direction: column;
@@ -1044,6 +1052,10 @@ body {
     margin-bottom: 2rem; }
   .file__content {
     margin-top: 1rem; }
+    .file__content pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      line-break: anywhere; }
   .file__renametitle {
     display: flex;
     justify-content: flex-start;
@@ -1112,15 +1124,976 @@ body {
     animation: glow 1.0s infinite alternate;
     transition: border 1.0s linear, box-shadow 1.0s linear; }
   .file__filter-input {
-    font-family: inherit;
-    color: inherit;
-    border-radius: 4px;
-    border: 1px solid #E8E8E8;
-    padding: 0;
-    height: 2rem;
-    padding-left: .35rem;
-    background-color: #fff;
+    position: relative;
     margin-bottom: 1rem;
-    width: 100%; }
-    .file__filter-input:hover {
-      border-color: #B2B2B2; }
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .file__filter-input > input {
+      font-family: inherit;
+      color: inherit;
+      border-radius: 4px;
+      border: 1px solid #E8E8E8;
+      padding: 0;
+      height: 2rem;
+      padding-left: .35rem;
+      background-color: #fff;
+      width: 100%; }
+      .file__filter-input > input:hover {
+        border-color: #B2B2B2; }
+    .file__filter-input > .btn {
+      margin-left: .5rem; }
+
+.floating-menu {
+  align-items: center;
+  color: white;
+  position: fixed;
+  bottom: 4rem;
+  right: 1rem;
+  border-radius: 2rem;
+  background-color: rgba(0, 159, 107, 0.6);
+  display: flex;
+  align-items: center;
+  height: 4rem;
+  color: white; }
+  .floating-menu > a {
+    width: 4rem;
+    border-radius: 100000px;
+    display: flex;
+    text-align: center;
+    justify-content: center; }
+    .floating-menu > a, .floating-menu > a:link, .floating-menu > a:visited {
+      text-decoration: none;
+      color: white; }
+  .floating-menu i {
+    font-size: 1.6rem; }
+  .floating-menu--collapsed {
+    justify-content: center;
+    align-items: center; }
+  .floating-menu-tracktitle {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 6rem;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+  .floating-menu-audioplayer {
+    display: none;
+    width: 0; }
+  .floating-menu-progress {
+    position: absolute;
+    z-index: 1000;
+    bottom: 6px;
+    right: 2rem;
+    width: calc(100% - 4rem);
+    height: 4px;
+    background-color: rgba(93, 86, 75, 0.4);
+    border-radius: 100px; }
+  .floating-menu-progress--1::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 1%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--2::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 2%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--3::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 3%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--4::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 4%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--5::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 5%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--6::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 6%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--7::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 7%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--8::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 8%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--9::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 9%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--10::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 10%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--11::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 11%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--12::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 12%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--13::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 13%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--14::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 14%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--15::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 15%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--16::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 16%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--17::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 17%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--18::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 18%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--19::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 19%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--20::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 20%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--21::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 21%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--22::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 22%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--23::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 23%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--24::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 24%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--25::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 25%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--26::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 26%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--27::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 27%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--28::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 28%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--29::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 29%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--30::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 30%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--31::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 31%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--32::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 32%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--33::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 33%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--34::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 34%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--35::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 35%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--36::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 36%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--37::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 37%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--38::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 38%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--39::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 39%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--40::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 40%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--41::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 41%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--42::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 42%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--43::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 43%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--44::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 44%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--45::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 45%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--46::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 46%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--47::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 47%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--48::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 48%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--49::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 49%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--50::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 50%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--51::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 51%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--52::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 52%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--53::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 53%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--54::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 54%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--55::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 55%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--56::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 56%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--57::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 57%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--58::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 58%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--59::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 59%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--60::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 60%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--61::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 61%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--62::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 62%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--63::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 63%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--64::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 64%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--65::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 65%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--66::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 66%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--67::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 67%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--68::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 68%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--69::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 69%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--70::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 70%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--71::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 71%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--72::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 72%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--73::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 73%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--74::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 74%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--75::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 75%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--76::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 76%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--77::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 77%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--78::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 78%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--79::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 79%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--80::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 80%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--81::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 81%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--82::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 82%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--83::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 83%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--84::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 84%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--85::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 85%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--86::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 86%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--87::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 87%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--88::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 88%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--89::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 89%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--90::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 90%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--91::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 91%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--92::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 92%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--93::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 93%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--94::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 94%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--95::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 95%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--96::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 96%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--97::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 97%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--98::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 98%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--99::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 99%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+  .floating-menu-progress--100::after {
+    position: absolute;
+    content: "";
+    background-color: #5D564B;
+    width: 100%;
+    height: 5px;
+    top: -1px;
+    left: 0;
+    border-radius: 13px; }
+
+#hidden-audioplayer {
+  display: none;
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0; }

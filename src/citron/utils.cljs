@@ -86,3 +86,21 @@
     (.stopPropagation e)
     (.preventDefault e)
     (func e)))
+
+(defn -padding-zero [n]
+  (if (> n 9)
+    n
+    (str "0" n)))
+
+(defn to-mmss
+  ([n]
+   (to-mmss nil n))
+  ([pad n]
+   (let [pad (str (-padding-zero (int (rem n 60))) (when pad ":") pad)]
+     (if (< n 60)
+       (if (s/includes? pad ":")
+         pad
+         (str "00:" pad))
+       (recur pad (int (/ n 60)))))))
+
+ 

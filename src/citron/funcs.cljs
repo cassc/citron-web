@@ -79,19 +79,30 @@
 
 ;; play all music inside current idrectory
 (defn add-to-playlist []
-  (swap! db/audioplayer-state update :playlist concat (filter utils/music? (:files @db/file-store)))
+  (swap! db/audioplayer-state update :playlist (fn [plist]
+                                                 (distinct (concat plist (filter utils/music? (:files @db/file-store))))))
   (db/set-error "Success!" 1000 :info))
 
 (defn make-static-path [path]
   (str "/staticfile/" path))
 
-(defn current-track-path [id]
-  (some-> (:playlist @db/audioplayer-state)
+(defn current-track-path
+  "Track path as on file system"
+  [id]
+  (some-> (:playlist @db/audioplayer-state [])
           (nth id nil)
-          (:path)
+          (:path)))
+
+(defn current-track-url
+  "Track url for requesting as audio stream"
+  [id]
+  (some-> id
+          (current-track-path)
           (make-static-path)))
 
-(defn current-track-name [id]
+(defn current-track-name
+  "Track file name as on file system"
+  [id]
   (some-> (current-track-path id)
           (utils/to-filename)))
 
@@ -120,7 +131,7 @@
               (pos? (:current-time @db/audioplayer-state 0))
               (not (s/ends-with? (go/get player "src") "html")))
        (.play (utils/get-element-by-id db/hidden-audio-player-id))
-       (let [track (or track (current-track-path (:id @db/audioplayer-state)))]
+       (let [track (or track (current-track-url (:id @db/audioplayer-state)))]
          (.pause player)
          (go/set player "src" track)
          (.load player)
@@ -130,18 +141,24 @@
 (defn resume-or-play! []
   (audio-play! true))
 
-(defn play-next-track []
+(defn play-nth-track
+  [next-id]
+  (let [prev-id (:id @db/audioplayer-state 0)]
+    (swap! db/audioplayer-state assoc :id next-id :prev-id prev-id)
+    (audio-play!)))
+
+(defn play-next-track
+  []
   (when (pos? (num-tracks))
-    (let [prev-id (:id @db/audioplayer-state)
+    (let [prev-id (:id @db/audioplayer-state 0)
           n-tracks (num-tracks)
           next-id (if (:shuffle? @db/audioplayer-state)
                     (rand-int n-tracks)
                     (let [id (inc prev-id)]
-                      (if (>= id n-tracks)
+                      (if (>= id n-tracks) 
                         0
                         id)))]
-      (swap! db/audioplayer-state assoc :id next-id :prev-id prev-id)
-      (audio-play!))))
+      (play-nth-track next-id))))
 
 (defn play-prev-track []
   (when (pos? (num-tracks))
@@ -200,6 +217,25 @@
 (defn init-audio-src! []
   (let [player (utils/get-element-by-id db/hidden-audio-player-id)]
     (swap! db/audioplayer-state assoc :paused? true)
-    (when-let [track (current-track-path (:id @db/audioplayer-state))]
+    (when-let [track (current-track-url (:id @db/audioplayer-state))]
       (t/info "init-audio-src")
       (go/set player "src" track))))
+
+(defn clear-playlist []
+  (stop-audio-play)
+  (swap! db/audioplayer-state assoc :paused? true :playlist []))
+
+(defn remove-track [id f]
+  (swap! db/audioplayer-state update :playlist #(remove (partial = f) %))
+  (when (= id (:id @db/audioplayer-state))
+    (play-next-track)))
+
+
+(defn audio-rewind []
+  (let [player (utils/get-element-by-id db/hidden-audio-player-id)]
+    (go/set player "currentTime" (max 0 (- 5 (:current-time @db/audioplayer-state))))))
+(defn audio-fastforward []
+  (let [player (utils/get-element-by-id db/hidden-audio-player-id)
+        max-time (:period @db/audioplayer-state 0)]
+    (go/set player "currentTime" (max (+ 5 (:current-time @db/audioplayer-state))
+                                      max-time))))

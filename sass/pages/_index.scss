@@ -491,7 +491,7 @@
   color: white;
 
   & > a{
-    width: 4rem;
+    width: 3rem;
     border-radius: 100000px;
     display: flex;
     text-align:center;
@@ -503,14 +503,17 @@
       color: white;
     }
   }
-  
+
   & i {
-    font-size: 1.6rem;
+    font-size: 2.6rem;
   }
   
   &--collapsed{
     justify-content: center;
     align-items: center;
+    & > a {
+      width: 4rem;
+    }
   }
 
   &--expanded{
@@ -547,7 +550,7 @@
       background-color: $color-secondary-light; 
       width: $i / 100 * 100%;
       height: 5px;
-      top: -1px;
+      top: -.5px;
       left: 0;
       border-radius: 13px;
     }
@@ -561,4 +564,133 @@
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+.playlist{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-right: 1px solid lightgrey;
+
+  @include respond(phone){
+    padding-top: 0;      
+  }
+
+  &__title{
+    font-weight: bold;
+    margin-bottom: .5rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    &--home{
+      cursor:pointer;
+      margin-right: 6px;
+    }
+    &-path{
+      @include breakLine;
+    }
+  }
+
+  &__items{
+    margin-top: 1rem;
+  }
+  
+  &__item{
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 50%) 2rem;
+    padding-left: 1.2rem;
+    align-items: center;
+    border-bottom: 1px solid $color-background;
+
+    @include respond(tab-land){
+      grid-template-columns: 2rem minmax(0, 80%) 2rem;
+    }
+
+    @include respond(tab-port){
+      grid-template-columns: 2rem minmax(0, 1fr) 2rem;
+    }
+    
+    &:first-child{
+      border-top: 1px solid $color-background;
+    }
+
+    &--link{
+      cursor: pointer;
+    }
+
+    &--delete{
+      cursor:pointer
+    }
+  }
+
+  &__playicon{
+    color: transparent;
+    font-size: 1.6rem;
+    margin-right: .8rem;
+    
+    &--playing{
+      color: $color-tertiary-light;
+    }
+  }
+  
+}
+
+
+.boxplayer{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 3rem;
+  background-color: $color-background;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-right: auto;
+  position: relative;
+  & > a{
+    width: 3rem;
+    border-radius: 100000px;
+    display: flex;
+    text-align:center;
+    justify-content: center;
+    &,
+    &:link,
+    &:visited {
+      text-decoration:none;
+      color: $color-tertiary-light;
+    }
+
+    & i {
+      font-size: 2.6rem;
+    }
+  }
+
+  &__progress{
+    position: absolute;
+    z-index: 1000;
+    bottom: 6px;
+    right: 2rem;
+    width: calc(100% - 4rem);
+    height: 4px;
+    background-color: rgba($color-secondary-light, 0.4);
+    border-radius: 100px;
+  }
+  @for $i from 1 through 100 {
+    &__progress--#{$i}::after {
+      position: absolute;
+      content:"";
+      // background-image: linear-gradient(to right, $color-prog-start 0%, $color-prog-end 100%);
+      background-color: $color-secondary-light; 
+      width: $i / 100 * 100%;
+      height: 5px;
+      top: -.5px; 
+      left: 0;
+      border-radius: 13px;
+    }
+  }
+
+  &__title{
+    width: 100%;
+    text-align:center;
+  }
 }

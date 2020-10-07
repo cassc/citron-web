@@ -1,7 +1,7 @@
 (ns citron.core
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require
-   [citron.views.home :refer [user-page login-page audio-player hidden-audio-player]]
+   [citron.views.home :refer [user-page login-page audio-player hidden-audio-player playlist-page]]
    [citron.http :as http]
    [citron.db :as db]
    [citron.utils :as utils]
@@ -66,8 +66,16 @@
     (let [url (utils/get-uri-hash)]
       (a/navigate! "#/login" {:return-url (if (s/blank? url) "#/user" url)}))))
 
+(defroute "/playlist"
+  []
+  (if (:user @db/app-state)
+    (reset! db/page-store playlist-page)
+    (let [url (utils/get-uri-hash)]
+      (a/navigate! "#/login" {:return-url (if (s/blank? url) "#/user" url)}))))
+
 (defn mount-components []
   (r/render [page] (utils/get-element-by-id "app")))
+
 
 (defn hook-browser-navigation! []
   (doto (History.)

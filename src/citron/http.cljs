@@ -142,7 +142,7 @@
                       (do
                         (swap! db/app-state assoc :user data)
                         (get-msg-board)
-                        (accountant/navigate! (:return-url @db/app-state "#/user")))
+                        (accountant/navigate! (or (:return-url @db/app-state) "#/user")))
                       (db/set-error msg)))
          :response-format :json
          :keywords? true
