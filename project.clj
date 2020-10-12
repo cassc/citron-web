@@ -1,4 +1,4 @@
-(defproject citron-web "0.1.3-SNAPSHOT"
+(defproject citron-web "0.1.3"
   :description "Citron frontend"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
