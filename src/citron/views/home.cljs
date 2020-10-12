@@ -61,7 +61,7 @@
    (let [parent path]
      (doall
       (for [{:keys [isdir path mime size]} files]
-        [:div.file__filewrapper {:key path :on-click #(a/navigate! "#/user" {:path path})}
+        [:div.file__filewrapper {:key path :on-click #(a/navigate! "#/user" {:path (js/encodeURIComponent path)})} 
          [:div.file__filedetails
           [:i.file__fileicon.mdi
            {:class (let [mime (or mime "")]
@@ -88,12 +88,12 @@
      [:div.file__btns
       (when-not (or (:rename-file? @db/app-state) (f/top? path))
         [:a.btn {:href "javascript:;"
-                 :on-click #(a/navigate! "#/user" {:path (f/parent path)})}
+                 :on-click #(a/navigate! "#/user" {:path (js/encodeURIComponent (f/parent path))})}
          [:i {:class "mdi mdi-arrow-up"}]
          "Up"])
       (when-not (or (:rename-file? @db/app-state) (and isdir (pos? (count files))))
         [:a.btn {:href "javascript:;"
-                 :on-click #(http/delete-file f (fn [] (a/navigate! "/user" {:path (f/parent path)})))}
+                 :on-click #(http/delete-file f (fn [] (a/navigate! "/user" {:path (js/encodeURIComponent (f/parent path))})))}
          [:i {:class "mdi mdi-delete-circle"}]
          "Delete"])
       (when-not (or (:rename-file? @db/app-state) isdir)
@@ -139,10 +139,10 @@
                  :on-change (f/set-app-state-value :filter-term)
                  :on-key-press (fn [e]
                                  (when (= 13 (.-charCode e))
-                                   (a/navigate! "#/user" {:path path :filter-term (:filter-term @db/app-state "")})))}]
+                                   (a/navigate! "#/user" {:path (js/encodeURIComponent path) :filter-term (js/encodeURIComponent (:filter-term @db/app-state ""))})))}]
         [:a.btn [:i.mdi.mdi-keyboard-return
                  {:href "javascript:;"
-                  :on-click #(a/navigate! "#/user" {:path path :filter-term (:filter-term @db/app-state "")})}]
+                  :on-click #(a/navigate! "#/user" {:path (js/encodeURIComponent path) :filter-term (js/encodeURIComponent (:filter-term @db/app-state ""))})}]
          " Go"]])
      (when (:rename-file? @db/app-state)
        [:div

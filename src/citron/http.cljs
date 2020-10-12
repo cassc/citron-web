@@ -14,7 +14,7 @@
     (if (= 403 (:status err))
       (do
         (swap! db/app-state dissoc :user)
-        (accountant/navigate! "#/login" {:return-url (utils/get-uri-hash)}))
+        (accountant/navigate! "#/login" {:return-url (js/encodeURIComponent (utils/get-uri-hash))}))
       (do
         (t/error uri err)
         (db/set-error (str "Error: " err))))))

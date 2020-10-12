@@ -64,14 +64,14 @@
       (http/get-file path (if (s/blank? offset) 0 (js/parseInt offset)) filter-term)
       (reset! db/page-store user-page))
     (let [url (utils/get-uri-hash)]
-      (a/navigate! "#/login" {:return-url (if (s/blank? url) "#/user" url)}))))
+      (a/navigate! "#/login" {:return-url (js/encodeURIComponent (if (s/blank? url) "#/user" url))}))))
 
 (defroute "/playlist"
   []
   (if (:user @db/app-state)
     (reset! db/page-store playlist-page)
     (let [url (utils/get-uri-hash)]
-      (a/navigate! "#/login" {:return-url (if (s/blank? url) "#/user" url)}))))
+      (a/navigate! "#/login" {:return-url (js/encodeURIComponent (if (s/blank? url) "#/user" url))}))))
 
 (defn mount-components []
   (r/render [page] (utils/get-element-by-id "app")))

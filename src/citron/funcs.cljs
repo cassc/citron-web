@@ -74,7 +74,7 @@
 (defn toggle-file-filter [_]
   (let [{:keys [filter?]} (swap! db/app-state update :filter? not)]
     (when-not filter?
-      (a/navigate! "#/user" {:path (:path @db/file-store)
+      (a/navigate! "#/user" {:path (js/encodeURIComponent (:path @db/file-store))
                              :offset 0}))))
 
 ;; play all music inside current idrectory
