@@ -28,7 +28,6 @@
 ;; config and states
 
 (defn page []
-  (utils/scroll-top)
   [:div.main
    (when-let [err (:error @db/app-state)]
      [:div.hint {:class (str "hint--" (:error-level @db/app-state "error"))
@@ -45,11 +44,13 @@
    [audio-player]])
 
 (defroute "/" []
+  (utils/scroll-top)
   (if (:user @db/app-state)
     (a/navigate! "#/user")
     (a/navigate! "#/login")))
 
 (defroute "/login" [query-params]
+  (utils/scroll-top)
   (swap! db/app-state assoc :return-url (:return-url query-params))
   (if (:user @db/app-state)
     (a/navigate! (:return-url query-params "#/user"))
@@ -57,6 +58,7 @@
 
 (defroute "/user"
   [query-params]
+  (utils/scroll-top)
   (t/info "query-params" query-params)
   (if (:user @db/app-state)
     (let [{:keys [path offset filter-term]} query-params]
@@ -68,6 +70,7 @@
 
 (defroute "/playlist"
   []
+  (utils/scroll-top)
   (if (:user @db/app-state)
     (reset! db/page-store playlist-page)
     (let [url (utils/get-uri-hash)]

@@ -49,9 +49,8 @@
                                           :audioplayer-state))
 
 (defn- set-active-speed [speed]
-  (when-let [player (or
-                     (.querySelector js/document "audio")
-                     (.querySelector js/document "video"))]
+  (when-let [player (.querySelector js/document ".file__mediaplayer")]
+    (t/info "Set playbackRate to" speed)
     (gobj/set player "playbackRate" speed)))
 
 (defn set-playback-speed [speed]

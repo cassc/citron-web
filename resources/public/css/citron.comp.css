@@ -1011,10 +1011,10 @@ body {
     grid-row-gap: 1rem; }
     @media only screen and (max-width: 75em) {
       .file__files {
-        grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        grid-template-columns: repeat(3, minmax(0, 1fr)); } }
     @media only screen and (max-width: 37.5em) {
       .file__files {
-        grid-template-columns: minmax(0, 1fr); } }
+        grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   .file__filewrapper {
     cursor: pointer;
     padding: 6px;

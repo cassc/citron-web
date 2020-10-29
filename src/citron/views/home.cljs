@@ -81,7 +81,7 @@
   (let [{:keys [more path files isdir content mime offset total] :as f} @db/file-store]
     [:div.file
      [:div.file__title
-      [:span.file__title--home {:on-click #(a/navigate! "/user")}
+      [:span.file__title--home {:on-click #(a/navigate! "#/user")}
        [:i.mdi-home.mdi]]
       [:span.file__title-path (str (when-not (= "." path)
                                      (f/to-display-path path)))]]
