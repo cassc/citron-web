@@ -171,11 +171,11 @@
 
   &__panel{
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: minmax(0, 1fr) 3fr;
     min-height: 90vh;
 
     @include respond(tab-land){
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: minmax(0, 1fr) 2fr;
     }
     
     @include respond(tab-port){
