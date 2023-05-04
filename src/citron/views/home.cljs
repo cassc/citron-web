@@ -61,11 +61,11 @@
    (let [parent path]
      (doall
       (for [{:keys [isdir path mime size]} files]
-        [:div.file__filewrapper {:key path :on-click #(a/navigate! "#/user" {:path (js/encodeURIComponent path)})} 
+        [:div.file__filewrapper {:key path :on-click #(a/navigate! "#/user" {:path (js/encodeURIComponent path)})}
          [:div.file__filedetails
           [:i.file__fileicon.mdi
            {:class (let [mime (or mime "")]
-                     (cond 
+                     (cond
                        isdir "mdi-folder"
                        (s/includes? mime "image") "mdi-image"
                        (s/includes? mime "text") "mdi-file-document"
@@ -87,12 +87,12 @@
                                      (f/to-display-path path)))]]
      [:div.file__btns
       (when-not (or (:rename-file? @db/app-state) (f/top? path))
-        [:a.btn {:href "javascript:;"
+        [:a.btn {:href     "javascript:;"
                  :on-click #(a/navigate! "#/user" {:path (js/encodeURIComponent (f/parent path))})}
          [:i {:class "mdi mdi-arrow-up"}]
          "Up"])
       (when-not (or (:rename-file? @db/app-state) (and isdir (pos? (count files))))
-        [:a.btn {:href "javascript:;"
+        [:a.btn {:href     "javascript:;"
                  :on-click #(http/delete-file f (fn [] (a/navigate! "/user" {:path (js/encodeURIComponent (f/parent path))})))}
          [:i {:class "mdi mdi-delete-circle"}]
          "Delete"])
@@ -110,18 +110,18 @@
           [:i {:class "mdi mdi-briefcase-upload"}]
           "Upload"]
          [:input#fileuploader
-          {:type :file
+          {:type      :file
            :on-change (fn [e]
-                        (let [file (first (array-seq (.. e -target -files)))
+                        (let [file     (first (array-seq (.. e -target -files)))
                               filename (when file (.-name file))]
                           (t/info "uploading file" filename)
                           (when filename
                             (http/upload-file
-                             (assoc @db/tmp-file-store :file file :parent path)
-                             (fn []
-                               (http/get-file path))))))}]])
+                              (assoc @db/tmp-file-store :file file :parent path)
+                              (fn []
+                                (http/get-file path))))))}]])
       (when isdir
-        [:a.btn {:href "javascript:;" :on-click f/toggle-file-filter
+        [:a.btn {:href  "javascript:;" :on-click f/toggle-file-filter
                  :class (when (:filter? @db/app-state)
                           "file__filter--active")}
          [:i.mdi.mdi-filter-outline]
@@ -134,14 +134,14 @@
          "Play All"])]
      (when (and isdir (:filter? @db/app-state))
        [:div.file__filter-input
-        [:input {:type :text :value (:filter-term @db/app-state)
-                 :placeholder "Search"
-                 :on-change (f/set-app-state-value :filter-term)
+        [:input {:type         :text :value (:filter-term @db/app-state)
+                 :placeholder  "Search"
+                 :on-change    (f/set-app-state-value :filter-term)
                  :on-key-press (fn [e]
                                  (when (= 13 (.-charCode e))
                                    (a/navigate! "#/user" {:path (js/encodeURIComponent path) :filter-term (js/encodeURIComponent (:filter-term @db/app-state ""))})))}]
         [:a.btn [:i.mdi.mdi-keyboard-return
-                 {:href "javascript:;"
+                 {:href     "javascript:;"
                   :on-click #(a/navigate! "#/user" {:path (js/encodeURIComponent path) :filter-term (js/encodeURIComponent (:filter-term @db/app-state ""))})}]
          " Go"]])
      (when (:rename-file? @db/app-state)
@@ -151,12 +151,12 @@
          [:div (utils/to-filename path)]
          [:i.mdi.mdi-arrow-right]
          [:input
-          {:type :text
-           :value (:filename @db/app-state)
+          {:type      :text
+           :value     (:filename @db/app-state)
            :on-change (f/set-app-state-value :filename)}]
-         [:a.btn {:href "javascript:;"
-                  :class (when (not= (:filename @db/app-state) (utils/to-filename path))
-                           "file__renametitlebtn--active")
+         [:a.btn {:href     "javascript:;"
+                  :class    (when (not= (:filename @db/app-state) (utils/to-filename path))
+                              "file__renametitlebtn--active")
                   :on-click (f/save-filename path)}
           "Save"]
          [:a.btn {:href "javascript:;" :on-click (f/toggle-rename-file (utils/to-filename path))} "Cancel"]]])
@@ -176,12 +176,12 @@
           [:div.file__mediaplayer-speedcontrol
            [:div "Speed: "]
            (doall
-            (for [speed (take 11 (iterate (partial + 0.25) 0.5))]
-              [:div.file__mediaplayer-speed {:key (str "playerspeed." speed)
-                                             :class (when (= speed (:speed @db/playback-config-store))
-                                                      "file__mediaplayer-speed--active")
-                                             :on-click #(db/set-playback-speed speed)}  
-               (str speed "X")]))]
+             (for [speed (take 11 (iterate (partial + 0.25) 0.5))]
+               [:div.file__mediaplayer-speed {:key      (str "playerspeed." speed)
+                                              :class    (when (= speed (:speed @db/playback-config-store))
+                                                          "file__mediaplayer-speed--active")
+                                              :on-click #(db/set-playback-speed speed)}
+                (str speed "X")]))]
           [:div.file__mediaplayer-speedcontrol
            [:div "Speed: "]
            [:div.file__mediaplayer-speed

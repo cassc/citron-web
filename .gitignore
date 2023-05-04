@@ -1,4 +1,5 @@
 /resources/public/js/compiled/**
+.dir-locals.el
 figwheel_server.log
 pom.xml
 *jar
@@ -11,3 +12,7 @@ pom.xml
 .lein-plugins/
 .repl
 .nrepl-port
+/.lsp/
+/node_modules/
+/resources/public/cljs-out/
+/resources/public/public
